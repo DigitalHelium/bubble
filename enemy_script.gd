@@ -2,6 +2,8 @@ class_name Enemy extends CharacterBody2D
 
 @onready var target : BubbleCharacter = $"../Character (main_bubble)"
 @onready var nav := $NavigationAgent2D
+@onready var animation_attack := $"AnimatedSprite2D (Body)"
+@onready var animation_legs := $"AnimatedSprite2D (Legs)"
 
 var speed = 300
 var acceleration = 0.01
@@ -9,7 +11,7 @@ var look_acceleration = 10
 var current_direction = Vector2(0, 0)
 var current_target_position
 
-var max_health = 100
+var max_health = 10000
 var current_health = 100
 var is_dead = false
 
@@ -19,17 +21,22 @@ signal enemy_died
 func _ready() -> void:
 	current_target_position = target.position
 	current_health = max_health
+	animation_legs.play("default")
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
-		
 	if target != null :
 		var direction = calculate_direction()
 		velocity.x = direction.x * speed
 		velocity.y = direction.y * speed
 		look_at(calculate_target_position())
 		move_and_slide()
+		
+		if nav.get_current_navigation_path().size() < 13 :
+			animation_attack.play('attack')
+		else :
+			animation_attack.stop()
 
 func calculate_direction() -> Vector2:
 	var next_direction = ((nav.get_next_path_position()-position)).normalized()

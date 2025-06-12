@@ -1,11 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://cofwwc6egthnj"]
+[gd_scene load_steps=18 format=3 uid="uid://cofwwc6egthnj"]
 
 [ext_resource type="Script" uid="uid://bwv7pcaouvcd2" path="res://enemy_script.gd" id="1_nbol8"]
-[ext_resource type="Texture2D" uid="uid://ku6byffuc48y" path="res://texture/body 1.png" id="2_tk0od"]
+[ext_resource type="Texture2D" uid="uid://b81r8wer6kmyx" path="res://texture/enemy/body.png" id="2_tk0od"]
+[ext_resource type="Texture2D" uid="uid://csd7sf7p736ss" path="res://texture/enemy/legs.png" id="2_veexk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tk0od"]
 radius = 18.0
 height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgcnb"]
+atlas = ExtResource("2_veexk")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7c2i"]
+atlas = ExtResource("2_veexk")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytepj"]
+atlas = ExtResource("2_veexk")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjc7l"]
+atlas = ExtResource("2_veexk")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kysew"]
+atlas = ExtResource("2_veexk")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6wp8"]
+atlas = ExtResource("2_veexk")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb5vd"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pgcnb")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_q7c2i")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ytepj")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_kjc7l")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_kysew")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_e6wp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veexk"]
+atlas = ExtResource("2_tk0od")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srcd"]
+atlas = ExtResource("2_tk0od")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnbej"]
+atlas = ExtResource("2_tk0od")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxcvy"]
+atlas = ExtResource("2_tk0od")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvp0y"]
+atlas = ExtResource("2_tk0od")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgcnb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_veexk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_3srcd")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lnbej")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_yxcvy")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vvp0y")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
 
 [node name="Enemy (CharacterBody2D)" type="CharacterBody2D"]
 collision_mask = 3
@@ -29,9 +125,15 @@ debug_enabled = true
 wait_time = 0.25
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, -8.33729e-14)
+[node name="AnimatedSprite2D (Legs)" type="AnimatedSprite2D" parent="."]
+position = Vector2(-36, 0)
+rotation = -3.14159
+sprite_frames = SubResource("SpriteFrames_sb5vd")
+frame_progress = 0.81892
+
+[node name="AnimatedSprite2D (Body)" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
-texture = ExtResource("2_tk0od")
+sprite_frames = SubResource("SpriteFrames_pgcnb")
+animation = &"attack"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

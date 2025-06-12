@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ku6byffuc48y"
-path="res://.godot/imported/body 1.png-c0482668c2a05c5f49c1e6f2e29c013f.ctex"
+uid="uid://csd7sf7p736ss"
+path="res://.godot/imported/legs.png-e2052f3b545c1cae9b050c3980480567.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/body 1.png"
-dest_files=["res://.godot/imported/body 1.png-c0482668c2a05c5f49c1e6f2e29c013f.ctex"]
+source_file="res://texture/enemy/legs.png"
+dest_files=["res://.godot/imported/legs.png-e2052f3b545c1cae9b050c3980480567.ctex"]
 
 [params]
 
