@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cofwwc6egthnj"]
+
+[ext_resource type="Script" uid="uid://bwv7pcaouvcd2" path="res://enemy_script.gd" id="1_nbol8"]
+[ext_resource type="Texture2D" uid="uid://ku6byffuc48y" path="res://texture/body 1.png" id="2_tk0od"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tk0od"]
+radius = 18.0
+height = 48.0
+
+[node name="Enemy (CharacterBody2D)" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_nbol8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tk0od")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+simplify_epsilon = 1.0
+avoidance_layers = 3
+avoidance_mask = 3
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -8.33729e-14)
+rotation = 3.14159
+scale = Vector2(1, 1)
+texture = ExtResource("2_tk0od")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
