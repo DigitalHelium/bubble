@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1a8cie8mhy26"]
+[gd_scene load_steps=4 format=3 uid="uid://dcy4l1oxers1n"]
 
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="1_8fu5w"]
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="2_5vowy"]
-[ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="3_5vowy"]
+[ext_resource type="PackedScene" uid="uid://bbudp5r0w33xl" path="res://background_water_scene.tscn" id="3_5vowy"]
 
 [node name="Scene Root (Node2D)" type="Node2D"]
 

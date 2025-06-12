@@ -72,7 +72,7 @@ func stop_damage_detection() -> void:
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and is_firing:
 		body.take_damage(particle_damage)
-		print("Урон: ", particle_damage)
+		#print("Урон: ", particle_damage)
 
 func _physics_process(delta) -> void:
 	button_time_held = clamp(calc_held_time(delta, button_time_held), -1, 1)
