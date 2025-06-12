@@ -37,7 +37,7 @@ func abstract_check_fire() -> void:
 func _physics_process(delta) -> void:
 	button_time_held = clamp(calc_held_time(delta, button_time_held), -1, 1)
 	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up"):
-		button_time_held = check_if_shot_fired(button_time_held, GUN_TYPE.SHOTGUN)
+		button_time_held = check_if_shot_fired(button_time_held, GUN_TYPE.AUTOMATIC)
 
 	
 	

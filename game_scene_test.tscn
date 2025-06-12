@@ -5,5 +5,7 @@
 [node name="Scene Root (Node2D)" type="Node2D"]
 
 [node name="Character (main_bubble)" parent="." instance=ExtResource("1_7x3gm")]
-position = Vector2(237, 134)
+position = Vector2(251, 135)
 max_acceleration = 6.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
