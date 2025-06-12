@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dppfjarkgyv54" path="res://gun_script.gd" id="1_lpc8u"]
 [ext_resource type="Texture2D" uid="uid://dvpbg6q7881d8" path="res://texture/gun.png" id="2_4foi7"]
 [ext_resource type="Texture2D" uid="uid://b7me73yu8krqw" path="res://texture/bubbles.png" id="4_dw03f"]
-[ext_resource type="Script" path="res://gun_sprite_script.gd" id="4_w1428"]
+[ext_resource type="Script" uid="uid://cpbkwkr11puvg" path="res://gun_sprite_script.gd" id="4_w1428"]
 [ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://gpu_particles_2d.gd" id="5_dw03f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pg37a"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr5grj8epx2lh"]
+
+[ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="1_8fu5w"]
+[ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="2_5vowy"]
+[ext_resource type="PackedScene" uid="uid://dqrquwlic2tfc" path="res://background_water_scene.tscn" id="3_5vowy"]
+
+[node name="Scene Root (Node2D)" type="Node2D"]
+
+[node name="Background Water (Node2D)" parent="." instance=ExtResource("3_5vowy")]
+position = Vector2(600, 272)
+scale = Vector2(7.4336, 3.85938)
+
+[node name="Character (main_bubble)" parent="." instance=ExtResource("1_8fu5w")]
+position = Vector2(251, 135)
+max_acceleration = 6.0
+
+[node name="Enemy (CharacterBody2D)" parent="." instance=ExtResource("2_5vowy")]
+position = Vector2(487, 149)

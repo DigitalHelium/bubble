@@ -7,6 +7,8 @@ class_name BubbleCharacter extends CharacterBody2D
 var acceleration : float = 0
 var direction : Vector2
 
+signal velocity_update_signal
+
 func get_input_keyboard() -> Vector2:
 	var direction : Vector2
 	direction.x = Input.get_axis("ui_right", "ui_left")
@@ -28,12 +30,11 @@ func calc_velocity(current_velocity : Vector2, acceleration: float) -> Vector2:
 	return current_velocity
 
 func _physics_process(delta) -> void:
-	#print(["Before: ", acceleration])
 	acceleration = fade_acceleration(acceleration)
-	#print(["After: ", acceleration])
 	velocity = calc_velocity(velocity, acceleration)
-	#print(velocity)
 	move_and_slide()
+	velocity_update_signal.emit(velocity)
+	
 
 
 func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> void:
