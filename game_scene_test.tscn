@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c04txwdgqkvp2"]
+[gd_scene load_steps=4 format=3 uid="uid://c04txwdgqkvp2"]
 
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="1_7x3gm"]
+[ext_resource type="PackedScene" uid="uid://d0m1nw8i1lgg5" path="res://obstacle_scene.tscn" id="2_3iwo8"]
+[ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="3_vkj2d"]
 
 [node name="Scene Root (Node2D)" type="Node2D"]
 
@@ -8,4 +10,5 @@
 position = Vector2(251, 135)
 max_acceleration = 6.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Enemy (CharacterBody2D)" parent="." instance=ExtResource("3_vkj2d")]
+position = Vector2(487, 149)

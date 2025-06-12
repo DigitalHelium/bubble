@@ -13,7 +13,6 @@ func get_input_keyboard() -> Vector2:
 	direction.y = Input.get_axis("ui_down", "ui_up")
 	return direction
 
-	
 func fade_acceleration(acceleration: float) -> float:
 	var new_acceleration = move_toward(acceleration, 0, 10)
 	#print (clamp(new_acceleration, 0, max_acceleration))
@@ -27,7 +26,7 @@ func calc_velocity(current_velocity : Vector2, acceleration: float) -> Vector2:
 		current_velocity.x = move_toward(current_velocity.x, 0, friction)
 		current_velocity.y = move_toward(current_velocity.y, 0, friction)
 	return current_velocity
-	
+
 func _physics_process(delta) -> void:
 	#print(["Before: ", acceleration])
 	acceleration = fade_acceleration(acceleration)
