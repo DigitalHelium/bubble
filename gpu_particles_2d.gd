@@ -1,13 +1,41 @@
 @tool extends GPUParticles2D
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("click"):
-		emitting = true
-		var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+signal mouse_hold(hold_time: float, force: Vector2)
 
+@onready var gun: Gun = get_parent().get_parent()
+
+var mouse_hold_time: float = 0.0
+var is_mouse_pressed: bool = false
+var min_distance: float = 5.0
+
+func _ready() -> void:
+	mouse_hold.connect(gun.abstract_check_fire)
+	
+func _process(delta: float) -> void:
+	if is_mouse_pressed:
+		var mouse_pos = get_global_mouse_position()
+		var distance_to_mouse = global_position.distance_to(mouse_pos)
+		
+		if distance_to_mouse < min_distance:
+			return
+			
+		mouse_hold_time += delta
+		var direction: Vector2 = (mouse_pos - global_position).normalized()
 		var gravity_force: int = 280
 		var gravity: Vector3 = Vector3(direction.x, direction.y, 0) * gravity_force
-
 		process_material.set_gravity(gravity)
-	else:
+		
+		var recoil_force: Vector2 = -direction * 1.09
+		print(mouse_hold, recoil_force)
+		mouse_hold.emit(mouse_hold_time, recoil_force)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("click"):
+		is_mouse_pressed = true
+		mouse_hold_time = 0.0
+		emitting = true
+		
+	elif Input.is_action_just_released("click"):
+		is_mouse_pressed = false
+		mouse_hold_time = 0.0
 		emitting = false

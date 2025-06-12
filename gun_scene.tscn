@@ -34,10 +34,11 @@ texture = ExtResource("2_4foi7")
 script = ExtResource("3_co8xi")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="GunSprite"]
+unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_pg37a")
 position = Vector2(13, -1)
 emitting = false
-amount = 42
+amount = 72
 texture = SubResource("AtlasTexture_yfr3y")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_14d2b")

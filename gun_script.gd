@@ -9,13 +9,14 @@ enum GUN_TYPE {AUTOMATIC = 1, SHOTGUN = 10}
 @export var automatic_acceleration : float = 30.0
 @export var shotgun_acceleration : float = 100.0
 
+@onready var character: BubbleCharacter = get_parent()
+
 ### Делаю, чтобы когда проходило время зажатия кнопки, 
 ### пушка определенного типа вызывала ивент выстрела, 
 ### который будет отлавливаться в скрипте персонажа и через метод изменять ускорение текущее
 
 func _ready():
-	var parent : BubbleCharacter = get_parent()
-	fire_signal.connect(parent.handle_fire_event)
+	fire_signal.connect(character.handle_fire_event)
 	
 func calc_held_time(delta: float, button_time_held: float) -> float:
 	return button_time_held - delta
@@ -31,13 +32,15 @@ func check_if_shot_fired(button_time_held: float, type: GUN_TYPE) -> float:
 		return 1.5
 	return button_time_held
 
-func abstract_check_fire() -> void:
-	return
+func abstract_check_fire(hold_time:float, force: Vector2) -> void:
+	if hold_time >= 0.1:
+		fire_signal.emit(automatic_acceleration, force)
 
-func _physics_process(delta) -> void:
-	button_time_held = clamp(calc_held_time(delta, button_time_held), -1, 1)
-	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up"):
-		button_time_held = check_if_shot_fired(button_time_held, GUN_TYPE.AUTOMATIC)
+
+#func _physics_process(delta) -> void:
+	#button_time_held = clamp(calc_held_time(delta, button_time_held), -1, 1)
+	#if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up"):
+		#button_time_held = check_if_shot_fired(button_time_held, GUN_TYPE.AUTOMATIC)
 
 	
 	

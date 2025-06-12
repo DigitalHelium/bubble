@@ -37,6 +37,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 
-func handle_fire_event(acceleration_delta : float) -> void:
+func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> void:
+	print("ПОГНАЛИ НАХУЙ")
 	acceleration += acceleration_delta
-	direction = get_input_keyboard()
+	direction = gun_direction
