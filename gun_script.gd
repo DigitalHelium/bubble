@@ -25,7 +25,7 @@ func check_if_shot_fired(button_time_held: float, direction : Vector2, type: GUN
 		
 	if type == GUN_TYPE.AUTOMATIC and button_time_held < 0:
 		fire_signal.emit(automatic_acceleration, direction)
-		fire_particle_signal.emit(0.1)
+		fire_particle_signal.emit(0.2)
 		return 0.1
 	if type == GUN_TYPE.SHOTGUN and button_time_held < 0:
 		fire_signal.emit(shotgun_acceleration, direction)
