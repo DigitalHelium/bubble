@@ -1,4 +1,4 @@
-extends GPUParticles2D
+class_name GpuParticles extends GPUParticles2D
 
 @onready var gun: Gun = get_parent().get_parent()
 

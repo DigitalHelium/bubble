@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://b7un5loptvwf"]
+[gd_scene load_steps=8 format=4 uid="uid://b7un5loptvwf"]
 
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="1_qt22y"]
-[ext_resource type="Texture2D" uid="uid://ckgukfncjc6rp" path="res://texture/tilemap.png" id="2_x4i1r"]
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="3_onl7p"]
 [ext_resource type="Texture2D" uid="uid://cgbqfeb6vppvq" path="res://texture/test-tilemap-32x32.png" id="4_x4i1r"]
 
@@ -209,7 +208,6 @@ texture = ExtResource("4_x4i1r")
 23:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpgay"]
-texture = ExtResource("2_x4i1r")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

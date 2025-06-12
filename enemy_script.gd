@@ -9,16 +9,25 @@ var look_acceleration = 10
 var current_direction = Vector2(0, 0)
 var current_target_position
 
+var max_health = 100
+var current_health = 100
+var is_dead = false
+
+# сигнал о смерти врага
+signal enemy_died
+
 func _ready() -> void:
 	current_target_position = target.position
+	current_health = max_health
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+		
 	if target != null :
 		var direction = calculate_direction()
-		#move_toward()
 		velocity.x = direction.x * speed
 		velocity.y = direction.y * speed
-		#look_at(nav.get_next_path_position())
 		look_at(calculate_target_position())
 		move_and_slide()
 
@@ -35,3 +44,20 @@ func calculate_target_position() -> Vector2:
 
 func _on_timer_timeout() -> void:
 	nav.target_position = target.position
+
+func take_damage(damage_amount: int) -> void:
+	if is_dead:
+		return
+		
+	current_health -= damage_amount
+	print("Дамаг: ", damage_amount, " HP: ", current_health)
+	if current_health <= 0:
+		die()
+
+func die() -> void:
+	is_dead = true
+	print("сдох")
+	emit_signal("enemy_died")
+	$CollisionShape2D.set_deferred("disabled", true)
+	await get_tree().create_timer(0.5).timeout
+	queue_free()
