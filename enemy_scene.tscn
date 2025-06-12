@@ -18,6 +18,9 @@ shape = SubResource("CapsuleShape2D_tk0od")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 simplify_epsilon = 1.0
+avoidance_enabled = true
+radius = 30.0
+max_neighbors = 1
 avoidance_layers = 3
 avoidance_mask = 3
 debug_enabled = true
@@ -29,7 +32,6 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, -8.33729e-14)
 rotation = 3.14159
-scale = Vector2(1, 1)
 texture = ExtResource("2_tk0od")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
