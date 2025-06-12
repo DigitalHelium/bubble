@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cvwq6kj261i6f"]
 
 [ext_resource type="Script" uid="uid://dppfjarkgyv54" path="res://gun_script.gd" id="1_lpc8u"]
-[ext_resource type="Texture2D" uid="uid://dvpbg6q7881d8" path="res://texture/gun.png" id="2_4foi7"]
+[ext_resource type="Texture2D" uid="uid://b7hppg8ya3ukl" path="res://texture/new gun.png" id="2_dw03f"]
 [ext_resource type="Texture2D" uid="uid://b7me73yu8krqw" path="res://texture/bubbles.png" id="4_dw03f"]
-[ext_resource type="Script" uid="uid://cpbkwkr11puvg" path="res://gun_sprite_script.gd" id="4_w1428"]
+[ext_resource type="Script" path="res://gun_sprite_script.gd" id="4_w1428"]
 [ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://gpu_particles_2d.gd" id="5_dw03f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pg37a"]
@@ -32,7 +32,7 @@ turbulence_noise_speed_random = 2.4
 script = ExtResource("1_lpc8u")
 
 [node name="GunSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_4foi7")
+texture = ExtResource("2_dw03f")
 script = ExtResource("4_w1428")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="GunSprite"]
