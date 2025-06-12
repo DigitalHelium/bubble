@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dppfjarkgyv54" path="res://gun_script.gd" id="1_lpc8u"]
 [ext_resource type="Texture2D" uid="uid://dvpbg6q7881d8" path="res://texture/gun.png" id="2_4foi7"]
-[ext_resource type="Script" uid="uid://3rcw7wfwmrk" path="res://gun_sprite.gd" id="3_co8xi"]
 [ext_resource type="Texture2D" uid="uid://b7me73yu8krqw" path="res://texture/bubbles.png" id="4_dw03f"]
-[ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://gpu_particles_2d.gd" id="4_w1428"]
+[ext_resource type="Script" uid="uid://cpbkwkr11puvg" path="res://gun_sprite_script.gd" id="4_w1428"]
+[ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://gpu_particles_2d.gd" id="5_dw03f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pg37a"]
 particles_animation = true
@@ -19,7 +19,9 @@ region = Rect2(0, 0, 78, 52)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_14d2b"]
 particle_flag_disable_z = true
 spread = 0.0
-gravity = Vector3(0, 98, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, -98, 0)
 anim_offset_max = 1.0
 turbulence_enabled = true
 turbulence_noise_strength = 1.4
@@ -31,7 +33,7 @@ script = ExtResource("1_lpc8u")
 
 [node name="GunSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_4foi7")
-script = ExtResource("3_co8xi")
+script = ExtResource("4_w1428")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="GunSprite"]
 unique_name_in_owner = true
@@ -42,4 +44,4 @@ amount = 72
 texture = SubResource("AtlasTexture_yfr3y")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_14d2b")
-script = ExtResource("4_w1428")
+script = ExtResource("5_dw03f")

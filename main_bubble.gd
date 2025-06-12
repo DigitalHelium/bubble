@@ -38,6 +38,6 @@ func _physics_process(delta) -> void:
 
 
 func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> void:
-	print("ПОГНАЛИ НАХУЙ")
+	#print("ПОГНАЛИ НАХУЙ")
 	acceleration += acceleration_delta
 	direction = gun_direction
