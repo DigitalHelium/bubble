@@ -11,7 +11,7 @@ var look_acceleration = 10
 var current_direction = Vector2(0, 0)
 var current_target_position
 
-var max_health = 10000
+var max_health = 100
 var current_health = 100
 var is_dead = false
 
