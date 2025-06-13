@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2gppjva667bc"]
+
+[ext_resource type="PackedScene" uid="uid://djb2ohwfikj11" path="res://gems/BubbleGem.tscn" id="1_51vgo"]
+[ext_resource type="Texture2D" uid="uid://hxbvepw8eb1i" path="res://texture/gems/ruby.png" id="2_kvmed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvmed"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="Gem" instance=ExtResource("1_51vgo")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_kvmed")
+
+[node name="CollisionShape2D2" parent="." index="1"]
+shape = SubResource("CircleShape2D_kvmed")
