@@ -13,6 +13,7 @@ var ACCELERATION = 0.01
 var PUSHING_FORCE_MULTIPLIER = 400 #насколько сильно отбрасывает
 var PUSHING_FORCE_FADE_ACCEL = 0.02 #насколько быстро враги возвращают свою скорость
 var ENEMY_BACKWARDS_VELOCITY_MULTIPLIER = 50 #насколько сильно можно изменить скорость врагу при выстреле в него
+var DAMAGE_PULSE_RADIUS = 150 #радиус отбрасывания врагов
 
 var speed = DEFAULT_SPEED
 var pushing_force : float = 0
@@ -115,7 +116,10 @@ func move_on_target() -> void:
 		animation_attack.stop()
 
 func recive_impulse(shot_rejection: float):
-	pushing_force = shot_rejection
+	
+	var player_enemy_distance = (target.global_position - global_position).length()
+	if player_enemy_distance < DAMAGE_PULSE_RADIUS:
+		pushing_force = shot_rejection
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.has_method("receive_damage"):
