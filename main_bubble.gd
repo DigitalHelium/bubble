@@ -5,6 +5,7 @@ class_name BubbleCharacter extends CharacterBody2D
 @export var friction : float = 3.0
 @export var mission_target : Node2D
 @onready var nav := $NavigationAgent2D
+@onready var upgrade_screen := $UpgradeScreen
 var current_gun = null
 
 var gun_scenes = {
@@ -16,6 +17,11 @@ var gun_scenes = {
 var acceleration : float = 0
 var direction : Vector2
 var next_mission_direction
+
+var ruby_count : int = 0
+var sapphire_count : int = 0
+var topaz_count : int = 0
+
 
 signal velocity_update_signal
 
@@ -72,3 +78,17 @@ func _on_timer_timeout() -> void:
 		if nav.get_current_navigation_path().size() > 3:
 		#next_mission_direction = nav.get_current_navigation_path(3)
 			next_mission_direction = to_global((nav.get_current_navigation_path().get(3) - position))
+			
+			
+func open_upgrade_screen(cards: Array[UpgradeCard.CardClass]):
+	upgrade_screen.visible = true
+	upgrade_screen.clear_card()
+	for card in cards:
+		var card_instans = preload("res://upgrade cards/UpgradeCard.tscn").instantiate()
+		card_instans.init(card)
+		upgrade_screen.add_card(card_instans);
+
+func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
+	if card.func_callable != null:
+		card.func_callable.call(self, card.card_args)
+	upgrade_screen.visible = false

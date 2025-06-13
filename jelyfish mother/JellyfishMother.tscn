@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cukldcoup716w"]
+[gd_scene load_steps=6 format=3 uid="uid://cukldcoup716w"]
 
 [ext_resource type="Texture2D" uid="uid://d0bn4obfwy1h7" path="res://texture/jellyfish/jellyfish_mother_body.png" id="1_5sfhh"]
+[ext_resource type="Script" uid="uid://15cjig4845vr" path="res://jelyfish mother/jellyfish_mother.gd" id="1_vpeiu"]
 [ext_resource type="Texture2D" uid="uid://6krje2yb13gv" path="res://texture/jellyfish/jellyfish_mother_eye.png" id="2_eg6cn"]
 [ext_resource type="Script" uid="uid://dg3vtnx33igkl" path="res://jelyfish mother/jellyfish_mother_eye.gd" id="3_eg6cn"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg6cn"]
+radius = 43.1045
+
 [node name="JellyfishMother" type="Node2D"]
+script = ExtResource("1_vpeiu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5sfhh")
@@ -13,3 +18,11 @@ texture = ExtResource("1_5sfhh")
 position = Vector2(0, -6)
 texture = ExtResource("2_eg6cn")
 script = ExtResource("3_eg6cn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_eg6cn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

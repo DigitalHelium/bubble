@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=14 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="3_tc057"]
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="5_bq5eh"]
-
 [ext_resource type="Texture2D" uid="uid://cya8bxkkoln0g" path="res://texture/main bubble/bubble front.png" id="7_1pwmh"]
+[ext_resource type="PackedScene" uid="uid://cnib1exrof02v" path="res://upgrade menu/UpgradeScreen.tscn" id="8_1pwmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
@@ -174,6 +174,9 @@ texture = ExtResource("7_1pwmh")
 wait_time = 0.1
 autostart = true
 
+[node name="UpgradeScreen" parent="." instance=ExtResource("8_1pwmh")]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pick_card" from="UpgradeScreen" to="." method="_on_upgrade_screen_pick_card"]
