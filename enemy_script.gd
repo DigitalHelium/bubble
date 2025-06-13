@@ -87,6 +87,7 @@ func kill_enemy() -> void:
 	emit_signal("enemy_died")
 	animation_attack.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(10).timeout
 	queue_free()
 
