@@ -1,6 +1,6 @@
 extends Control
 	
-
+var scene_setting = preload("res://setting/Control.tscn")
 func _on_start_button_pressed() -> void:
 	#SceneTransition.change_scene("res://Assets/Scenes/Game_with_store.tscn")
 	$"Menu_button/Sound button".volume_db = -100
@@ -16,4 +16,7 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 	$"Menu_button/Sound button".volume_db = -100
 	$Music.volume_db = -100
-	
+
+func _on_teach_button_pressed() -> void:
+	var scene =  scene_setting.instantiate()
+	add_child(scene)

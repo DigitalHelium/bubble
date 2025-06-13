@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://transition/scene_transition.tscn"
 
-[display]
-
-mouse_cursor/custom_image="uid://5egqu2flcg6l"
-
 [file_customization]
 
 folder_colors={

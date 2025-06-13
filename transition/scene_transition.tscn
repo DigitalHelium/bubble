@@ -161,3 +161,4 @@ libraries = {
 stream = ExtResource("4_nfw06")
 volume_db = -15.0
 autoplay = true
+bus = &"Sound"

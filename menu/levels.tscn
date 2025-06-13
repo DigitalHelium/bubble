@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvkf4gxb5t0ef"]
+[gd_scene load_steps=11 format=3 uid="uid://dvkf4gxb5t0ef"]
 
 [ext_resource type="Script" uid="uid://cg6dnefhapc3e" path="res://menu/levels.gd" id="1_wo31f"]
 [ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="2_u4eie"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://csh85gd8h0oq8" path="res://sound/фоновая веселая музыка.mp3" id="4_tlu08"]
 [ext_resource type="Script" uid="uid://b1cl4rfkix0hx" path="res://menu/menu_button_2.gd" id="4_xxm61"]
 [ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="5_egpo1"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="6_egpo1"]
 
 [sub_resource type="Theme" id="Theme_u4eie"]
 
@@ -24,7 +25,7 @@ expand_mode = 1
 [node name="Background Water (Node2D)" parent="Background" instance=ExtResource("2_u4eie")]
 z_index = -1
 position = Vector2(576.5, 325.5)
-scale = Vector2(4.61328, 3.46484)
+scale = Vector2(0.0078125, 0.0078125)
 
 [node name="4" type="Label" parent="Background"]
 layout_mode = 0
@@ -108,6 +109,7 @@ script = ExtResource("4_xxm61")
 [node name="Sound button" type="AudioStreamPlayer" parent="Background/Menu_button2"]
 stream = ExtResource("5_egpo1")
 volume_db = -15.0
+bus = &"Sound"
 
 [node name="SoundRate" type="Timer" parent="Background/Menu_button2/Sound button"]
 wait_time = 0.05
@@ -180,7 +182,26 @@ theme_override_fonts/font = ExtResource("4_lyh8m")
 theme_override_font_sizes/font_size = 50
 text = "Меню"
 
+[node name="MMB2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 209.0
+offset_top = 104.0
+offset_right = 945.0
+offset_bottom = 184.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("6_egpo1")
+theme_override_font_sizes/font_size = 50
+text = "Уровни"
+horizontal_alignment = 1
+
 [node name="MMB" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -200,6 +221,7 @@ vertical_alignment = 1
 stream = ExtResource("4_tlu08")
 volume_db = -15.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Background/Menu_button2/1" to="." method="_on__pressed_1"]
 [connection signal="pressed" from="Background/Menu_button2/2" to="." method="_on__pressed_2"]
