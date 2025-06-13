@@ -46,20 +46,23 @@ void fragment() {
 	vec2 uv = UV;
 	uv.y *= aspect_ratio;
 
-	vec2 time = get_wave_uv(vec2(0.5,0.9), 0.003, uv);
-	vec2 time1 = get_wave_uv(vec2(1,6), 0.001, uv);
-	vec2 time2 = get_wave_uv(vec2(2,1), 0.001, uv);
-	vec2 time3 = get_wave_uv(vec2(0.5,1.5), 0.002, uv);
+	vec2 time = get_wave_uv(vec2(0.5,0.9), 0.005, uv) + get_flow_uv(movement_direction);
+	vec2 time1 = get_wave_uv(vec2(1,6), 0.006, uv) + get_flow_uv(movement_direction);
+	vec2 time2 = get_wave_uv(vec2(2,1), 0.007, uv) + get_flow_uv(movement_direction);
+	vec2 time3 = get_wave_uv(vec2(0.5,1.5), 0.008, uv) + get_flow_uv(movement_direction);
+	vec2 time4 = get_wave_uv(vec2(0.1,0.6), 0.009, uv) + get_flow_uv(movement_direction);
 	
 
 	uv = round(uv * resolution) / resolution;
 
-	float background = get_noise_layer(backgroundTex, uv, 1, time, 5, 0.5, 0.9, 0.6, 0.45);
-	float firstLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 4, time1, 2, 0.5, 1, 0.1, 0.0);
-	float secondLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 3, time2, 2.5, 0.6, 0.8, 0.35, 0.2);
-	float thirdLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 2, time3, 3, 0.8 , 0.9, 0.40, 0.05);
+	float background = get_noise_layer(backgroundTex, uv, 6, time, 5, 0.2, 1, 0.7, 0.45);
+	float firstLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 6, time1, 3, 0.3, 1, 0.5, 0.05);
+	float secondLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 3, time2, 2.5, 0.5, 0.8, 0.4, 0.2);
+	float thirdLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 1, time3, 2, 0.7 , 0.9, 0.2, 0);
 
-	COLOR = vec4(water_color *  background, 1) / (firstLayer * secondLayer * thirdLayer);
+	float fourthLayer = 1.0 - get_noise_layer(firstLayerTex, uv, 0.25, time4, 2, 0.9 , 0.9, 0.1, 0);
+
+	COLOR = vec4(water_color *  background, 1) / (firstLayer * secondLayer * thirdLayer * fourthLayer);
 
 
 	//COLOR = vec4(time, 0, 1);

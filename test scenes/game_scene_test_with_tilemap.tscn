@@ -86,7 +86,7 @@ load_path = "res://.godot/imported/Marble 14 - 256x256.png-f03211547a68f79047cc8
 shader = SubResource("Shader_yyi13")
 shader_parameter/backgroundTex = SubResource("CompressedTexture2D_tmsp2")
 shader_parameter/firstLayerTex = SubResource("CompressedTexture2D_wm3jm")
-shader_parameter/aspect_ratio = 0.51918
+shader_parameter/aspect_ratio = 0.519181
 shader_parameter/movement_direction = Vector2(0, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4i1r"]

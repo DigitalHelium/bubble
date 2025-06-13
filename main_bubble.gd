@@ -33,7 +33,8 @@ func _physics_process(delta) -> void:
 	acceleration = fade_acceleration(acceleration)
 	velocity = calc_velocity(velocity, acceleration)
 	move_and_slide()
-	velocity_update_signal.emit(velocity)
+	
+	velocity_update_signal.emit(position)
 	
 
 
