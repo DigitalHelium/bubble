@@ -2,10 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ddenutd72sxh0" path="res://guns/base/base_gun.tscn" id="1_ra5om"]
 [ext_resource type="Script" uid="uid://c67rjn3jwqbol" path="res://guns/shotgun/shotgun.gd" id="2_2u46a"]
-[ext_resource type="Texture2D" uid="uid://bh24qcwr6naf" path="res://texture/guns/gun E.png" id="3_xlcjn"]
+[ext_resource type="Texture2D" uid="uid://bqx8487syyey" path="res://texture/guns/gun D.png" id="3_kyirx"]
 
 [node name="Shotgun" instance=ExtResource("1_ra5om")]
 script = ExtResource("2_2u46a")
 
 [node name="GunSprite" parent="." index="0"]
-texture = ExtResource("3_xlcjn")
+texture = ExtResource("3_kyirx")
+
+[node name="GPUParticles2D" parent="GunSprite" index="0"]
+amount = 550
+lifetime = 1.0
