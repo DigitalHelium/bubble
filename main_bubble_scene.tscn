@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="5_bq5eh"]
 [ext_resource type="Texture2D" uid="uid://cya8bxkkoln0g" path="res://texture/main bubble/bubble front.png" id="7_1pwmh"]
-[ext_resource type="Script" uid="uid://c4mod36qu00vy" path="res://main_bubble_camera_script.gd" id="7_tjaii"]
+[ext_resource type="Script" path="res://main_bubble_camera_script.gd" id="7_tjaii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
