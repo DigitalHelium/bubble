@@ -30,6 +30,7 @@ func _ready():
 func initialize(char: BubbleCharacter):
 	character = char
 	fire_signal.connect(character.handle_fire_event)
+	direction = (get_global_mouse_position() - get_parent().global_position).normalized()
 
 func setup_damage_detection() -> void:
 	particles_area = Area2D.new()
@@ -83,6 +84,9 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed("click"):
 		button_time_held = check_if_shot_fired(button_time_held, -direction)
 
+func get_mouse_scroll_direction(current_dir: Vector2, angle: float) -> Vector2:
+	return current_dir.rotated(deg_to_rad(angle))
+
 func _process(delta: float) -> void:
 	direction = (get_global_mouse_position() - get_parent().global_position).normalized()
 	position = direction * radius
@@ -90,3 +94,11 @@ func _process(delta: float) -> void:
 	
 	if particles_area:
 		particles_area.rotation = 0 
+		
+#func _unhandled_input(event):
+	#if event is InputEventMouseButton:
+		#if event.is_pressed():
+			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				#direction = get_mouse_scroll_direction(direction, 10)
+			#if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				#direction = get_mouse_scroll_direction(direction, -10)

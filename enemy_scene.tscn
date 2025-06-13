@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cofwwc6egthnj"]
+[gd_scene load_steps=19 format=3 uid="uid://cofwwc6egthnj"]
 
 [ext_resource type="Script" uid="uid://bwv7pcaouvcd2" path="res://enemy_script.gd" id="1_nbol8"]
 [ext_resource type="Texture2D" uid="uid://b81r8wer6kmyx" path="res://texture/enemy/body.png" id="2_tk0od"]
@@ -103,6 +103,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_veexk"]
+radius = 18.0
+height = 64.0
+
 [node name="Enemy (CharacterBody2D)" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_nbol8")
@@ -137,5 +141,13 @@ animation = &"attack"
 
 [node name="Timer (Speed)" type="Timer" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-19, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_veexk")
+
 [connection signal="timeout" from="Timer (Navigation)" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer (Speed)" to="." method="_on_timer_speed_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
