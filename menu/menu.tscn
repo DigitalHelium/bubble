@@ -1,17 +1,18 @@
-﻿[gd_scene load_steps=18 format=3 uid="uid://cmtxysk03mlt1"]
-[ext_resource type="Texture2D" uid="uid://cp33hpoxnxv2l" path="res://texture/tilemaps/Magi v jame png (2).png" id="1_6nwqt"]
+[gd_scene load_steps=18 format=3 uid="uid://b2fqmu8saa5r2"]
+
+[ext_resource type="Texture2D" uid="uid://d3pivpnsfaji2" path="res://texture/tilemaps/Magi v jame png (2).png" id="1_6nwqt"]
 [ext_resource type="Script" uid="uid://brrq4u6e5qasw" path="res://menu/menu.gd" id="1_bc54p"]
-[ext_resource type="Texture2D" uid="uid://c3fu8mqn635n0" path="res://texture/background_menu/bfe38a8f305e967cecab52493d5cf3f2.jpg" id="1_pbjm4"]
+[ext_resource type="Texture2D" uid="uid://bgvbl8ex3qdb0" path="res://texture/background_menu/bfe38a8f305e967cecab52493d5cf3f2.jpg" id="1_pbjm4"]
 [ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="2_043lm"]
-[ext_resource type="FontFile" uid="uid://b4sbc0b6bf4bi" path="res://fonts/pixel-anchor-jack_0.ttf" id="2_pbjm4"]
-[ext_resource type="FontFile" uid="uid://cln25s7bk4sqi" path="res://fonts/PixeloidMono.ttf" id="3_svuvw"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="2_pbjm4"]
+[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="3_svuvw"]
 [ext_resource type="Script" uid="uid://rglsi46gyp70" path="res://sprite_character.gd" id="6_bc54p"]
 [ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="7_043lm"]
 [ext_resource type="Script" uid="uid://dkgko1pxw0i4e" path="res://menu/menu_button.gd" id="7_dmxns"]
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="8_iesyu"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="9_iuxab"]
-[ext_resource type="AudioStream" uid="uid://dsfoqyc5b6mx8" path="res://sound/фоновая веселая музыка.mp3" id="11_043lm"]
-[ext_resource type="AudioStream" uid="uid://dy3asl0d7wfcm" path="res://sound/дзынь.mp3" id="12_iesyu"]
+[ext_resource type="AudioStream" uid="uid://csh85gd8h0oq8" path="res://sound/фоновая веселая музыка.mp3" id="11_043lm"]
+[ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="12_iesyu"]
 
 [sub_resource type="Theme" id="Theme_t4idd"]
 
@@ -118,7 +119,7 @@ script = ExtResource("1_bc54p")
 [node name="Background Water (Node2D)" parent="." instance=ExtResource("2_043lm")]
 z_index = -1
 position = Vector2(574.5, 324)
-scale = Vector2(4.61328, 1.92969)
+scale = Vector2(4.61328, 3.46484)
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -240,7 +241,6 @@ script = ExtResource("7_dmxns")
 [node name="Sound button" type="AudioStreamPlayer" parent="Menu_button"]
 stream = ExtResource("12_iesyu")
 volume_db = -15.0
-bus = &"Sounds"
 
 [node name="SoundRate" type="Timer" parent="Menu_button/Sound button"]
 wait_time = 0.05
