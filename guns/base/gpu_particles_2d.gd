@@ -39,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 func handle_fire_signal(emiting_time: float, spread_amount: float):
-	print(emiting_time, spread_amount)
+	#print(emiting_time, spread_amount)
 	current_emiting_time = emiting_time
 	emitting = true
 	process_material.set("spread", spread_amount)
