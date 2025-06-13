@@ -30,6 +30,7 @@ func _ready() -> void:
 	current_target_position = target.position
 	animation_legs.play("default")
 	timer_deceleration.stop()
+	target.enemy_push_after_damage_signal.connect(recive_impulse)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -51,16 +52,19 @@ func calculate_target_position() -> Vector2:
 	return current_target_position
 
 func calculate_escape_position() -> Vector2:
-	var direction_to_target = target.position - position
-	var x = -5000.0 if (direction_to_target.x > 0) else 5000.0
-	var y = -5000.0 if (direction_to_target.y > 0) else 5000.0
-	return Vector2(x, y)
+	if is_instance_valid(target):
+		var direction_to_target = target.position - position
+		var x = -5000.0 if (direction_to_target.x > 0) else 5000.0
+		var y = -5000.0 if (direction_to_target.y > 0) else 5000.0
+		return Vector2(x, y)
+	return Vector2(0,0)
 
 func _on_timer_timeout() -> void:
 	if is_dead:
 		nav.target_position = calculate_escape_position()
 		return
-	nav.target_position = target.position
+	if is_instance_valid(target):
+		nav.target_position = target.position
 
 func take_damage(damage_amount: int, shot_rejection: float, rejection_duration: float) -> void:
 	if is_dead:
@@ -69,12 +73,12 @@ func take_damage(damage_amount: int, shot_rejection: float, rejection_duration: 
 	current_health -= damage_amount
 	timer_deceleration.start(rejection_duration)
 	#speed = SPEED_DECELERATION
-	pushing_force = -shot_rejection
+	pushing_force = shot_rejection
 	print("Дамаг: ", damage_amount, " HP: ", current_health)
 	if current_health <= 0:
-		die()
+		kill_enemy()
 
-func die() -> void:
+func kill_enemy() -> void:
 	is_dead = true
 	pushing_force = 0
 	current_target_position = calculate_escape_position()
@@ -110,7 +114,10 @@ func move_on_target() -> void:
 	else :
 		animation_attack.stop()
 
+func recive_impulse(shot_rejection: float):
+	pushing_force = shot_rejection
 
 func _on_area_2d_body_entered(body) -> void:
-	
+	if body.has_method("receive_damage"):
+		body.receive_damage()
 	pass 
