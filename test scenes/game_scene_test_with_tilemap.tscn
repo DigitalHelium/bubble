@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://btsdlauxshm7i"]
 
 [ext_resource type="Texture2D" uid="uid://cgbqfeb6vppvq" path="res://texture/test-tilemap-32x32.png" id="1_r3ahi"]
-[ext_resource type="PackedScene" uid="uid://bbudp5r0w33xl" path="res://background_water_scene.tscn" id="1_yyi13"]
+[ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="1_yyi13"]
 [ext_resource type="Texture2D" uid="uid://ckgukfncjc6rp" path="res://texture/tilemap.png" id="2_in7h5"]
 [ext_resource type="Texture2D" uid="uid://cyeyy16cdeicr" path="res://texture/tilemaps/tilemap.png" id="3_03xkv"]
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="3_noxx7"]
@@ -887,8 +887,6 @@ sources/1 = SubResource("TileSetAtlasSource_dpgay")
 sources/3 = SubResource("TileSetAtlasSource_tmsp2")
 
 [node name="Scene Root (Node2D)2" type="Node2D"]
-position = Vector2(164, 6)
-metadata/_edit_group_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-7, -2)

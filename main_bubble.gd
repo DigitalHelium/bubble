@@ -34,7 +34,7 @@ func fade_acceleration(acceleration: float) -> float:
 	#print (clamp(new_acceleration, 0, max_acceleration))
 	return new_acceleration
 
-func calc_velocity(current_velocity : Vector2, acceleration: float, friction: float) -> Vector2:
+func calc_velocity(current_velocity : Vector2, acceleration: float) -> Vector2:
 	if acceleration != 0:
 		current_velocity.x = move_toward(current_velocity.x, direction.x * max_speed, acceleration)
 		current_velocity.y = move_toward(current_velocity.y, direction.y * max_speed, acceleration)
@@ -45,7 +45,7 @@ func calc_velocity(current_velocity : Vector2, acceleration: float, friction: fl
 
 func _physics_process(delta) -> void:
 	acceleration = fade_acceleration(acceleration)
-	velocity = calc_velocity(velocity, acceleration, friction)
+	velocity = calc_velocity(velocity, acceleration)
 	move_and_slide()
 	
 	velocity_update_signal.emit(position)

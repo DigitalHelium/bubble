@@ -8,5 +8,5 @@ func _ready():
 	start_damage_duration = 0.1
 	reload_time = 0.1
 	duration_shot_fire = 0.1
-	spread_amount = 3
+	spread_amount = 2
 	damageAreaSize = Vector2(150.0, 55.0) 
