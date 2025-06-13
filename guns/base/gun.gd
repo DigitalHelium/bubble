@@ -7,7 +7,8 @@ signal fire_particle_signal
 
 @export var acceleration : float = 30.0
 @export var particle_damage : int = 25
-@export var shot_rejection: int = 10
+@export var shot_rejection: float = 1.0
+@export var rejection_duration: float = 1.0  #seconds
 @export var reload_time: float = 0.2
 @export var spread_amount: float = 1
 
@@ -74,7 +75,7 @@ func stop_damage_detection() -> void:
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and is_firing:
-		body.take_damage(particle_damage, shot_rejection)
+		body.take_damage(particle_damage, shot_rejection, rejection_duration)
 		print("Урон: ", particle_damage)
 
 func _physics_process(delta) -> void:

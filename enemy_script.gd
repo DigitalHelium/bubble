@@ -10,8 +10,10 @@ var DEFAULT_SPEED = 300
 var SPEED_DECELERATION = 150
 var LOOK_ACCELERATION = 10
 var ACCELERATION = 0.01
+var DEFAULT_PUSHING_VECTOR = Vector2(1, 1)
 
 var speed = DEFAULT_SPEED
+var pushing_vector = DEFAULT_PUSHING_VECTOR
 var current_direction = Vector2(0, 0)
 var current_target_position
 
@@ -57,13 +59,14 @@ func _on_timer_timeout() -> void:
 		return
 	nav.target_position = target.position
 
-func take_damage(damage_amount: int, shot_rejection: int) -> void:
+func take_damage(damage_amount: int, shot_rejection: float, rejection_duration: float) -> void:
 	if is_dead:
 		return
-		
+	
 	current_health -= damage_amount
-	timer_deceleration.start(1)
-	speed = SPEED_DECELERATION
+	timer_deceleration.start(rejection_duration)
+	#speed = SPEED_DECELERATION
+	pushing_vector = Vector2(shot_rejection, shot_rejection)
 	print("Дамаг: ", damage_amount, " HP: ", current_health)
 	if current_health <= 0:
 		die()
@@ -80,11 +83,13 @@ func die() -> void:
 
 func _on_timer_speed_timeout() -> void:
 	speed = DEFAULT_SPEED
+	pushing_vector = DEFAULT_PUSHING_VECTOR
 	timer_deceleration.stop()
 
 func move(direction: Vector2) -> void:
-	velocity.x = direction.x * speed
-	velocity.y = direction.y * speed
+	var normalized_push = pushing_vector.normalized()
+	velocity.x = normalized_push.x * direction.x * speed
+	velocity.y = normalized_push.y * direction.y * speed
 	look_at(calculate_target_position())
 	move_and_slide()
 
@@ -93,7 +98,7 @@ func movement_at_death() -> void:
 
 func move_on_target() -> void:
 	move(calculate_direction())
-	if nav.get_current_navigation_path().size() < 13 :
+	if nav.get_current_navigation_path().size() < 7:
 		animation_attack.play('attack')
 	else :
 		animation_attack.stop()
