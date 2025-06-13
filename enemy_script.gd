@@ -10,10 +10,12 @@ var DEFAULT_SPEED = 300
 var SPEED_DECELERATION = 150
 var LOOK_ACCELERATION = 10
 var ACCELERATION = 0.01
-var DEFAULT_PUSHING_VECTOR = Vector2(1, 1)
+var PUSHING_FORCE_MULTIPLIER = 400 #насколько сильно отбрасывает
+var PUSHING_FORCE_FADE_ACCEL = 0.02 #насколько быстро враги возвращают свою скорость
+var ENEMY_BACKWARDS_VELOCITY_MULTIPLIER = 50 #насколько сильно можно изменить скорость врагу при выстреле в него
 
 var speed = DEFAULT_SPEED
-var pushing_vector = DEFAULT_PUSHING_VECTOR
+var pushing_force : float = 0
 var current_direction = Vector2(0, 0)
 var current_target_position
 
@@ -35,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		return
 	if target != null :
 		move_on_target()
+	pushing_force = fade_pushing_force(pushing_force)
 
 func calculate_direction() -> Vector2:
 	var next_direction = ((nav.get_next_path_position()-position)).normalized()
@@ -66,13 +69,14 @@ func take_damage(damage_amount: int, shot_rejection: float, rejection_duration: 
 	current_health -= damage_amount
 	timer_deceleration.start(rejection_duration)
 	#speed = SPEED_DECELERATION
-	pushing_vector = Vector2(shot_rejection, shot_rejection)
+	pushing_force = -shot_rejection
 	print("Дамаг: ", damage_amount, " HP: ", current_health)
 	if current_health <= 0:
 		die()
 
 func die() -> void:
 	is_dead = true
+	pushing_force = 0
 	current_target_position = calculate_escape_position()
 	print("сдох")
 	emit_signal("enemy_died")
@@ -83,16 +87,19 @@ func die() -> void:
 
 func _on_timer_speed_timeout() -> void:
 	speed = DEFAULT_SPEED
-	pushing_vector = DEFAULT_PUSHING_VECTOR
 	timer_deceleration.stop()
 
 func move(direction: Vector2) -> void:
-	var normalized_push = pushing_vector.normalized()
-	velocity.x = normalized_push.x * direction.x * speed
-	velocity.y = normalized_push.y * direction.y * speed
+	velocity.x = direction.x * speed
+	velocity.y = direction.y * speed
+	velocity.x = move_toward(velocity.x, -velocity.x * ENEMY_BACKWARDS_VELOCITY_MULTIPLIER, pushing_force * PUSHING_FORCE_MULTIPLIER)
+	velocity.y = move_toward(velocity.y, -velocity.y * ENEMY_BACKWARDS_VELOCITY_MULTIPLIER, pushing_force * PUSHING_FORCE_MULTIPLIER)
 	look_at(calculate_target_position())
 	move_and_slide()
-
+	
+func fade_pushing_force(pushing_force : float) -> float:
+	return move_toward(pushing_force, 0, PUSHING_FORCE_FADE_ACCEL)
+	
 func movement_at_death() -> void:
 	move(current_target_position.normalized())
 
@@ -102,3 +109,8 @@ func move_on_target() -> void:
 		animation_attack.play('attack')
 	else :
 		animation_attack.stop()
+
+
+func _on_area_2d_body_entered(body) -> void:
+	
+	pass 
