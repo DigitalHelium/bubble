@@ -4,6 +4,8 @@ func _ready():
 	super._ready()
 	particle_damage = 15
 	acceleration = 90
+	shot_rejection = -1.3
+	rejection_duration = 0.7
 	
 	start_damage_duration = 0.1
 	reload_time = 0.1

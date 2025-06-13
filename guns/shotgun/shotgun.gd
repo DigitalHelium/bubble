@@ -3,6 +3,8 @@ class_name Shotgun extends BaseGun
 func _ready():
 	super._ready()
 	particle_damage = 150
+	shot_rejection = -0.9
+	rejection_duration = 0.7
 	reload_time = 0.09
 	acceleration = 180.0
 	start_damage_duration = 0.09

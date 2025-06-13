@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://csd7sf7p736ss" path="res://texture/enemy/legs.png" id="2_veexk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tk0od"]
-radius = 18.0
-height = 48.0
+radius = 16.0
+height = 42.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgcnb"]
 atlas = ExtResource("2_veexk")
@@ -108,7 +108,7 @@ collision_mask = 3
 script = ExtResource("1_nbol8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 0)
+position = Vector2(-10, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tk0od")
 
