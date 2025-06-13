@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://djb2ohwfikj11"]
+
+[ext_resource type="Script" uid="uid://sm5c8xycmlcu" path="res://gems/gem.gd" id="1_hnrki"]
+[ext_resource type="Texture2D" uid="uid://bx2ojfsjjjdu1" path="res://texture/gems/bubble_gem.png" id="2_pyn50"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17bxu"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="Gem" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 64
+gravity_scale = 0.0
+script = ExtResource("1_hnrki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_17bxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pyn50")

@@ -35,6 +35,8 @@ click={
 2d_navigation/layer_1="Player"
 2d_physics/layer_2="Walls/Enemies ?"
 2d_navigation/layer_2="Walls/Enemies ?"
+2d_physics/layer_7="Gems picker"
+2d_physics/layer_8="Gems"
 
 [rendering]
 

@@ -41,3 +41,8 @@ func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> vo
 	#print("ПОГНАЛИ НАХУЙ")
 	acceleration += acceleration_delta
 	direction = gun_direction
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("LKKL 222")
+	if body.has_method("collect"):
+		body.collect()
