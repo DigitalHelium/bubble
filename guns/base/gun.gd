@@ -1,25 +1,28 @@
-class_name Gun extends Node2D
+﻿class_name BaseGun extends Node2D
 
 var button_time_held = 0.0
 
 signal fire_signal
 signal fire_particle_signal
 
-enum GUN_TYPE {AUTOMATIC = 1, SHOTGUN = 10}
-
-@export var automatic_acceleration : float = 30.0
-@export var shotgun_acceleration : float = 100.0
+@export var acceleration : float = 30.0
 @export var particle_damage : int = 25
-
-@onready var character : BubbleCharacter = get_parent()
+@export var reload: float = 0.2
+@export var start_damage_duration: float = 0.2
+@export var radius = 32.0
+@export var damageAreaSize: Vector2 = Vector2(100, 50) 
+@onready var character : BubbleCharacter = null
 
 var direction : Vector2
 var particles_area: Area2D
 var is_firing: bool = false
 
 func _ready():
-	fire_signal.connect(character.handle_fire_event)
 	setup_damage_detection()
+	
+func initialize(char: BubbleCharacter):
+	character = char
+	fire_signal.connect(character.handle_fire_event)
 
 func setup_damage_detection() -> void:
 	particles_area = Area2D.new()
@@ -28,7 +31,7 @@ func setup_damage_detection() -> void:
 	
 	var collision_shape = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
-	shape.size = Vector2(100, 50) 
+	shape.size = damageAreaSize
 	collision_shape.shape = shape
 	particles_area.add_child(collision_shape)
 	
@@ -39,23 +42,17 @@ func setup_damage_detection() -> void:
 func calc_held_time(delta: float, button_time_held: float) -> float:
 	return button_time_held - delta
 
-func check_if_shot_fired(button_time_held: float, direction : Vector2, type: GUN_TYPE) -> float:
-	if type == GUN_TYPE.AUTOMATIC and button_time_held < 0:
-		fire_signal.emit(automatic_acceleration, direction)
-		fire_particle_signal.emit(0.2)
-		start_damage_detection(0.2)
+func check_if_shot_fired(button_time_held: float, direction : Vector2) -> float:
+	if button_time_held < 0:
+		fire_signal.emit(acceleration, direction)
+		fire_particle_signal.emit(reload)
+		start_damage_detection(start_damage_duration)
 		return 0.1
-	if type == GUN_TYPE.SHOTGUN and button_time_held < 0:
-		fire_signal.emit(shotgun_acceleration, direction)
-		fire_particle_signal.emit(0.05)
-		start_damage_detection(0.05)
-		return 1.5
 	return button_time_held
 
 func start_damage_detection(duration: float) -> void:
 	is_firing = true
 	particles_area.monitoring = true
-
 	# таймер до отключения дамага
 	var timer = Timer.new()
 	timer.wait_time = duration
@@ -72,14 +69,12 @@ func stop_damage_detection() -> void:
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and is_firing:
 		body.take_damage(particle_damage)
-		#print("Урон: ", particle_damage)
+		print("Урон: ", particle_damage)
 
 func _physics_process(delta) -> void:
 	button_time_held = clamp(calc_held_time(delta, button_time_held), -1, 1)
 	if Input.is_action_pressed("click"):
-		button_time_held = check_if_shot_fired(button_time_held, -direction, GUN_TYPE.AUTOMATIC)
-
-var radius := 32.0
+		button_time_held = check_if_shot_fired(button_time_held, -direction)
 
 func _process(delta: float) -> void:
 	direction = (get_global_mouse_position() - get_parent().global_position).normalized()

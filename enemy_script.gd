@@ -64,7 +64,7 @@ func take_damage(damage_amount: int) -> void:
 	current_health -= damage_amount
 	timer_deceleration.start(1)
 	speed = SPEED_DECELERATION
-	#print("Дамаг: ", damage_amount, " HP: ", current_health)
+	print("Дамаг: ", damage_amount, " HP: ", current_health)
 	if current_health <= 0:
 		die()
 

@@ -1,6 +1,6 @@
-extends Sprite2D
+﻿extends Sprite2D
 
-@onready var gun_root: Gun = get_parent()
+@onready var gun_root: BaseGun = get_parent()
 
 func _process(delta: float) -> void:
 	if gun_root != null:

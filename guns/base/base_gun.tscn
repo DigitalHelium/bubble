@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddenutd72sxh0"]
+
+[ext_resource type="Script" uid="uid://mb2vrentfhr5" path="res://guns/base/gun.gd" id="1_p8efu"]
+[ext_resource type="Texture2D" uid="uid://b7hppg8ya3ukl" path="res://texture/new gun.png" id="2_82r4w"]
+[ext_resource type="Script" uid="uid://cpbkwkr11puvg" path="res://guns/base/gun_sprite_script.gd" id="3_bm86j"]
+[ext_resource type="Texture2D" uid="uid://b7me73yu8krqw" path="res://texture/bubbles.png" id="4_3weku"]
+[ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://guns/base/gpu_particles_2d.gd" id="5_6ncdk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bhkge"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oyyh"]
+atlas = ExtResource("4_3weku")
+region = Rect2(0, 0, 78, 52)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ygjop"]
+particle_flag_disable_z = true
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, -98, 0)
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 1.4
+turbulence_noise_scale = 4.0
+turbulence_noise_speed_random = 2.4
+
+[node name="BaseGun" type="Node2D"]
+script = ExtResource("1_p8efu")
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_82r4w")
+script = ExtResource("3_bm86j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="GunSprite"]
+unique_name_in_owner = true
+material = SubResource("CanvasItemMaterial_bhkge")
+position = Vector2(13, -1)
+emitting = false
+amount = 72
+texture = SubResource("AtlasTexture_0oyyh")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_ygjop")
+script = ExtResource("5_6ncdk")

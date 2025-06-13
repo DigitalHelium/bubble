@@ -1,7 +1,6 @@
-class_name GpuParticles extends GPUParticles2D
+﻿class_name GpuParticles extends GPUParticles2D
 
-@onready var gun: Gun = get_parent().get_parent()
-
+@onready var gun: BaseGun = get_parent().get_parent()
 
 var mouse_hold_time: float = 0.0
 var is_mouse_pressed: bool = false

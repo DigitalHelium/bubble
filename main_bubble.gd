@@ -3,17 +3,30 @@ class_name BubbleCharacter extends CharacterBody2D
 @export var max_speed : float = 220.0
 @export var max_acceleration : float = 100.0
 @export var friction : float = 3.0
+var current_gun = null
+
+var gun_scenes = {
+	"pistol": preload("res://guns/pistol/pistol.tscn"),
+	"shotgun": preload("res://guns/shotgun/shotgun.tscn")
+}
 
 var acceleration : float = 0
 var direction : Vector2
 
 signal velocity_update_signal
 
-func get_input_keyboard() -> Vector2:
-	var direction : Vector2
-	direction.x = Input.get_axis("ui_right", "ui_left")
-	direction.y = Input.get_axis("ui_down", "ui_up")
-	return direction
+func _ready() -> void:
+	change_weapon("pistol")
+	
+func change_weapon(weapon_name: String):
+	if weapon_name in gun_scenes:
+		if current_gun:
+			current_gun.queue_free()
+		var new_gun = gun_scenes[weapon_name].instantiate()
+		add_child(new_gun)
+		if new_gun.has_method("initialize"):
+			new_gun.initialize(self)
+		current_gun = new_gun
 
 func fade_acceleration(acceleration: float) -> float:
 	var new_acceleration = move_toward(acceleration, 0, 10)
@@ -39,6 +52,5 @@ func _physics_process(delta) -> void:
 
 
 func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> void:
-	#print("ПОГНАЛИ НАХУЙ")
 	acceleration += acceleration_delta
 	direction = gun_direction
