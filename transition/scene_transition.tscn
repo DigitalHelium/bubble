@@ -1,9 +1,9 @@
-﻿[gd_scene load_steps=8 format=3 uid="uid://cbcruapt8c30t"]
+[gd_scene load_steps=8 format=3 uid="uid://dv0kugd2u4cdb"]
 
 [ext_resource type="Script" uid="uid://drko0edbjgxfj" path="res://transition/scene_transition.gd" id="1_uybku"]
-[ext_resource type="Texture2D" uid="uid://cp33hpoxnxv2l" path="res://texture/tilemaps/Magi v jame png (2).png" id="2_uwj8c"]
-[ext_resource type="FontFile" uid="uid://b4sbc0b6bf4bi" path="res://fonts/pixel-anchor-jack_0.ttf" id="3_dpmjd"]
-[ext_resource type="AudioStream" uid="uid://bbpcffyodusj2" path="res://sound/дробовик.wav" id="4_nfw06"]
+[ext_resource type="Texture2D" uid="uid://d3pivpnsfaji2" path="res://texture/tilemaps/Magi v jame png (2).png" id="2_uwj8c"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="3_dpmjd"]
+[ext_resource type="AudioStream" uid="uid://ckki2d8ogg6gu" path="res://sound/дробовик.wav" id="4_nfw06"]
 
 [sub_resource type="Animation" id="Animation_isulh"]
 resource_name = "RESET"
