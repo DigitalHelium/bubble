@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csh85gd8h0oq8"
+path="res://.godot/imported/фоновая веселая музыка.mp3-4a7c647ce73e3607488b9512ed875c8b.mp3str"
+
+[deps]
+
+source_file="res://sound/фоновая веселая музыка.mp3"
+dest_files=["res://.godot/imported/фоновая веселая музыка.mp3-4a7c647ce73e3607488b9512ed875c8b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
