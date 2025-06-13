@@ -24,6 +24,8 @@ var direction : Vector2
 var particles_area: Area2D
 var is_firing: bool = false
 
+var is_mouse_wheel: bool = true
+
 func _ready():
 	setup_damage_detection()
 	
@@ -88,17 +90,18 @@ func get_mouse_scroll_direction(current_dir: Vector2, angle: float) -> Vector2:
 	return current_dir.rotated(deg_to_rad(angle))
 
 func _process(delta: float) -> void:
-	direction = (get_global_mouse_position() - get_parent().global_position).normalized()
+	if !is_mouse_wheel:
+		direction = (get_global_mouse_position() - get_parent().global_position).normalized()
 	position = direction * radius
 	rotation = direction.angle()
 	
 	if particles_area:
 		particles_area.rotation = 0 
 		
-#func _unhandled_input(event):
-	#if event is InputEventMouseButton:
-		#if event.is_pressed():
-			#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				#direction = get_mouse_scroll_direction(direction, 10)
-			#if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				#direction = get_mouse_scroll_direction(direction, -10)
+func _unhandled_input(event):
+	if event is InputEventMouseButton and is_mouse_wheel:
+		if event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				direction = get_mouse_scroll_direction(direction, 10)
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				direction = get_mouse_scroll_direction(direction, -10)
