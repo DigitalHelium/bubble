@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://btsdlauxshm7i"]
+[gd_scene load_steps=21 format=4 uid="uid://btsdlauxshm7i"]
 
 [ext_resource type="Texture2D" uid="uid://cgbqfeb6vppvq" path="res://texture/test-tilemap-32x32.png" id="1_r3ahi"]
 [ext_resource type="PackedScene" uid="uid://bbudp5r0w33xl" path="res://background_water_scene.tscn" id="1_yyi13"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="4_i1s7y"]
 [ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn" id="7_tmsp2"]
 [ext_resource type="PackedScene" uid="uid://cje61erorswap" path="res://gems/gems/ruby gem/RubyGem.tscn" id="8_wm3jm"]
+[ext_resource type="PackedScene" uid="uid://cukldcoup716w" path="res://jelyfish mother/JellyfishMother.tscn" id="11_1fjbe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4i1r"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -948,3 +949,6 @@ gravity_scale = 0.5
 position = Vector2(260, 143)
 mass = 0.1
 gravity_scale = 0.5
+
+[node name="JellyfishMother" parent="." instance=ExtResource("11_1fjbe")]
+position = Vector2(117, 143)
