@@ -29,18 +29,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
+		movement_at_death()
 		return
 	if target != null :
-		var direction = calculate_direction()
-		velocity.x = direction.x * speed
-		velocity.y = direction.y * speed
-		look_at(calculate_target_position())
-		move_and_slide()
-		
-		if nav.get_current_navigation_path().size() < 13 :
-			animation_attack.play('attack')
-		else :
-			animation_attack.stop()
+		move_on_target()
 
 func calculate_direction() -> Vector2:
 	var next_direction = ((nav.get_next_path_position()-position)).normalized()
@@ -49,11 +41,20 @@ func calculate_direction() -> Vector2:
 	return current_direction
 
 func calculate_target_position() -> Vector2:
-	current_target_position.x = move_toward(current_target_position.x, target.position.x, LOOK_ACCELERATION)
-	current_target_position.y = move_toward(current_target_position.y, target.position.y, LOOK_ACCELERATION)
+	current_target_position.x = move_toward(current_target_position.x, nav.target_position.x, LOOK_ACCELERATION)
+	current_target_position.y = move_toward(current_target_position.y, nav.target_position.y, LOOK_ACCELERATION)
 	return current_target_position
 
+func calculate_escape_position() -> Vector2:
+	var direction_to_target = target.position - position
+	var x = -5000.0 if (direction_to_target.x > 0) else 5000.0
+	var y = -5000.0 if (direction_to_target.y > 0) else 5000.0
+	return Vector2(x, y)
+
 func _on_timer_timeout() -> void:
+	if is_dead:
+		nav.target_position = calculate_escape_position()
+		return
 	nav.target_position = target.position
 
 func take_damage(damage_amount: int) -> void:
@@ -69,12 +70,30 @@ func take_damage(damage_amount: int) -> void:
 
 func die() -> void:
 	is_dead = true
+	current_target_position = calculate_escape_position()
 	print("сдох")
 	emit_signal("enemy_died")
+	animation_attack.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(10).timeout
 	queue_free()
 
 func _on_timer_speed_timeout() -> void:
 	speed = DEFAULT_SPEED
 	timer_deceleration.stop()
+
+func move(direction: Vector2) -> void:
+	velocity.x = direction.x * speed
+	velocity.y = direction.y * speed
+	look_at(calculate_target_position())
+	move_and_slide()
+
+func movement_at_death() -> void:
+	move(current_target_position.normalized())
+
+func move_on_target() -> void:
+	move(calculate_direction())
+	if nav.get_current_navigation_path().size() < 13 :
+		animation_attack.play('attack')
+	else :
+		animation_attack.stop()
