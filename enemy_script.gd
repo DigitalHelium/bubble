@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-@onready var target : BubbleCharacter = $"../Character (main_bubble)"
+@onready var target : BubbleCharacter
 @onready var nav := $NavigationAgent2D
 @onready var animation_attack := $"AnimatedSprite2D (Body)"
 @onready var animation_legs := $"AnimatedSprite2D (Legs)"
@@ -28,10 +28,19 @@ var is_dead = false
 signal enemy_died
 
 func _ready() -> void:
-	current_target_position = target.position
+	if target == null:
+		target = $"../Character (main_bubble)"
+	if target != null:
+		current_target_position = target.position
 	animation_legs.play("default")
 	timer_deceleration.stop()
 	target.enemy_push_after_damage_signal.connect(recive_impulse)
+
+func set_target(target : BubbleCharacter) -> void:
+	self.target = target
+
+func set_current_target_position(current_target_position : Vector2) -> void:
+	self.current_target_position = current_target_position
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -84,7 +93,8 @@ func kill_enemy() -> void:
 	pushing_force = 0
 	current_target_position = calculate_escape_position()
 	print("сдох")
-	emit_signal("enemy_died")
+	enemy_died.emit(self)
+	#emit_signal("enemy_died")
 	animation_attack.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
@@ -117,7 +127,7 @@ func move_on_target() -> void:
 		animation_attack.stop()
 
 func recive_impulse(shot_rejection: float):
-	
+
 	var player_enemy_distance = (target.global_position - global_position).length()
 	if player_enemy_distance < DAMAGE_PULSE_RADIUS:
 		pushing_force = shot_rejection
