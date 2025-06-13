@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=12 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://cs8goh545qli0" path="res://texture/Bubble tort 3.png" id="2_cny3r"]
@@ -142,8 +142,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_tjaii")
 }
-
-[node name="Gun (gun_scene)" parent="." instance=ExtResource("3_cny3r")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
