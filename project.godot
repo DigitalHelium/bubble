@@ -21,7 +21,8 @@ SceneTransition="*res://transition/scene_transition.tscn"
 
 [display]
 
-mouse_cursor/custom_image="uid://5egqu2flcg6l"
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
