@@ -8,4 +8,5 @@
 script = ExtResource("2_loyyg")
 
 [node name="GunSprite" parent="." index="0"]
+position = Vector2(-6, 0)
 texture = ExtResource("3_loyyg")

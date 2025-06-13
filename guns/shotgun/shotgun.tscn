@@ -8,6 +8,7 @@
 script = ExtResource("2_2u46a")
 
 [node name="GunSprite" parent="." index="0"]
+position = Vector2(-7, 0)
 texture = ExtResource("3_kyirx")
 
 [node name="GPUParticles2D" parent="GunSprite" index="0"]
