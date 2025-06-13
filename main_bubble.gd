@@ -91,22 +91,6 @@ func decrease_bubble_size() -> void:
 	enemy_push_after_damage_signal.emit(1.5)
 	pass
 
-func receive_damage() -> void:
-	current_health -=1
-	decrease_bubble_size()
-	print(current_health)
-	if current_health <= 0:
-		kill_player()
-	pass
-
-func kill_player() -> void:
-	queue_free()
-	pass
-
-func decrease_bubble_size() -> void:
-	enemy_push_after_damage_signal.emit(1.5)
-	pass
-
 func _on_timer_timeout() -> void:
 	if mission_target != null:
 		nav.target_position = mission_target.position
