@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=13 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://cs8goh545qli0" path="res://texture/Bubble tort 3.png" id="2_cny3r"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="3_tc057"]
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="5_bq5eh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
+radius = 33.0151
 
 [sub_resource type="Animation" id="Animation_1pwmh"]
 length = 0.001
@@ -98,13 +101,19 @@ _data = {
 &"spring": SubResource("Animation_byoix")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tc057"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pwmh"]
+radius = 25.0
 
 [node name="Character (CharacterBody2D)" type="CharacterBody2D"]
 collision_mask = 3
+platform_floor_layers = 4294967167
 script = ExtResource("1_dpgxj")
 
+[node name="Collision (CollisionShape2D)2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_byoix")
+
 [node name="Sprite (Sprite2D)" type="Sprite2D" parent="."]
+z_index = 10
 texture = ExtResource("2_cny3r")
 script = ExtResource("3_byoix")
 
@@ -134,8 +143,27 @@ libraries = {
 &"": SubResource("AnimationLibrary_tjaii")
 }
 
-[node name="Collision (CollisionShape2D)" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tc057")
+[node name="Gun (gun_scene)" parent="." instance=ExtResource("3_cny3r")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1pwmh")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 256
+collision_mask = 512
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+polygon = PackedVector2Array(39, 38, 39, -39, 0, -39, 0, -29, 6, -29, 20, -20, 29, -6, 29, 6, 20, 20, 6, 29, -6, 29, -20, 20, -29, 6, -29, -6, -19, -21, -6, -29, 0, -29, 0, -39, -39, -39, -39, 38)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../AnimatableBody2D")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
