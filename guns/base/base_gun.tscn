@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddenutd72sxh0"]
+[gd_scene load_steps=10 format=3 uid="uid://ddenutd72sxh0"]
 
 [ext_resource type="Script" uid="uid://mb2vrentfhr5" path="res://guns/base/gun.gd" id="1_p8efu"]
 [ext_resource type="Texture2D" uid="uid://b7hppg8ya3ukl" path="res://texture/new gun.png" id="2_82r4w"]
 [ext_resource type="Script" uid="uid://cpbkwkr11puvg" path="res://guns/base/gun_sprite_script.gd" id="3_bm86j"]
 [ext_resource type="Texture2D" uid="uid://b7me73yu8krqw" path="res://texture/bubbles.png" id="4_3weku"]
 [ext_resource type="Script" uid="uid://cyco2pd7pm81l" path="res://guns/base/gpu_particles_2d.gd" id="5_6ncdk"]
+[ext_resource type="AudioStream" uid="uid://ckki2d8ogg6gu" path="res://sound/дробовик.wav" id="6_6fpm8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bhkge"]
 particles_animation = true
@@ -45,3 +46,11 @@ texture = SubResource("AtlasTexture_0oyyh")
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_ygjop")
 script = ExtResource("5_6ncdk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GunSprite/GPUParticles2D"]
+stream = ExtResource("6_6fpm8")
+volume_db = -15.0
+
+[node name="SoundRate" type="Timer" parent="GunSprite/GPUParticles2D/AudioStreamPlayer"]
+wait_time = 0.6
+one_shot = true

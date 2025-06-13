@@ -1,0 +1,318 @@
+﻿[gd_scene load_steps=18 format=3 uid="uid://cmtxysk03mlt1"]
+[ext_resource type="Texture2D" uid="uid://cp33hpoxnxv2l" path="res://texture/tilemaps/Magi v jame png (2).png" id="1_6nwqt"]
+[ext_resource type="Script" uid="uid://brrq4u6e5qasw" path="res://menu/menu.gd" id="1_bc54p"]
+[ext_resource type="Texture2D" uid="uid://c3fu8mqn635n0" path="res://texture/background_menu/bfe38a8f305e967cecab52493d5cf3f2.jpg" id="1_pbjm4"]
+[ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="2_043lm"]
+[ext_resource type="FontFile" uid="uid://b4sbc0b6bf4bi" path="res://fonts/pixel-anchor-jack_0.ttf" id="2_pbjm4"]
+[ext_resource type="FontFile" uid="uid://cln25s7bk4sqi" path="res://fonts/PixeloidMono.ttf" id="3_svuvw"]
+[ext_resource type="Script" uid="uid://rglsi46gyp70" path="res://sprite_character.gd" id="6_bc54p"]
+[ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="7_043lm"]
+[ext_resource type="Script" uid="uid://dkgko1pxw0i4e" path="res://menu/menu_button.gd" id="7_dmxns"]
+[ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="8_iesyu"]
+[ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="9_iuxab"]
+[ext_resource type="AudioStream" uid="uid://dsfoqyc5b6mx8" path="res://sound/фоновая веселая музыка.mp3" id="11_043lm"]
+[ext_resource type="AudioStream" uid="uid://dy3asl0d7wfcm" path="res://sound/дзынь.mp3" id="12_iesyu"]
+
+[sub_resource type="Theme" id="Theme_t4idd"]
+
+[sub_resource type="Animation" id="Animation_1pwmh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Body (Sprite2D):position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Left leg (Sprite2D):position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Right leg (Sprite2D):position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_byoix"]
+resource_name = "spring"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Body (Sprite2D):position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0, -0.3, -0.25, 0, 0.25, 0, -0.2, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, -0.2, -0.25, 0, 0.25, 0, -0.3, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Hand (Sprite2D):position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7.1, -0.25, 0, 0.25, 0, 7.2, -0.25, 0, 0.25, 0, 7.3, -0.25, 0, 0.25, 0, 7.4, -0.25, 0, 0.25, 0, 7.5, -0.25, 0, 0.25, 0, 7.4, -0.25, 0, 0.25, 0, 7.3, -0.25, 0, 0.25, 0, 7.2, -0.25, 0, 0.25, 0, 7.1, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 6.9, -0.25, 0, 0.25, 0, 6.8, -0.25, 0, 0.25, 0, 6.7, -0.25, 0, 0.25, 0, 6.6, -0.25, 0, 0.25, 0, 6.5, -0.25, 0, 0.25, 0, 6.6, -0.25, 0, 0.25, 0, 6.7, -0.25, 0, 0.25, 0, 6.8, -0.25, 0, 0.25, 0, 6.9, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Left leg (Sprite2D):position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(15.1, -0.25, 0, 0.25, 0, 15.2, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.4, -0.25, 0, 0.25, 0, 15.5, -0.25, 0, 0.25, 0, 15.6, -0.25, 0, 0.25, 0, 15.7, -0.25, 0, 0.25, 0, 15.8, -0.25, 0, 0.25, 0, 15.9, -0.25, 0, 0.25, 0, 15.8, -0.25, 0, 0.25, 0, 15.7, -0.25, 0, 0.25, 0, 15.6, -0.25, 0, 0.25, 0, 15.5, -0.25, 0, 0.25, 0, 15.4, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.2, -0.25, 0, 0.25, 0, 15.1, -0.25, 0, 0.25, 0, 15, -0.25, 0, 0.25, 0, 14.9, -0.25, 0, 0.25, 0, 14.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Right leg (Sprite2D):position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(15.1, -0.25, 0, 0.25, 0, 15.2, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.4, -0.25, 0, 0.25, 0, 15.5, -0.25, 0, 0.25, 0, 15.6, -0.25, 0, 0.25, 0, 15.7, -0.25, 0, 0.25, 0, 15.8, -0.25, 0, 0.25, 0, 15.9, -0.25, 0, 0.25, 0, 15.8, -0.25, 0, 0.25, 0, 15.7, -0.25, 0, 0.25, 0, 15.6, -0.25, 0, 0.25, 0, 15.5, -0.25, 0, 0.25, 0, 15.4, -0.25, 0, 0.25, 0, 15.3, -0.25, 0, 0.25, 0, 15.2, -0.25, 0, 0.25, 0, 15.1, -0.25, 0, 0.25, 0, 15, -0.25, 0, 0.25, 0, 14.9, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjaii"]
+_data = {
+&"RESET": SubResource("Animation_1pwmh"),
+&"spring": SubResource("Animation_byoix")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bc54p")
+
+[node name="Background Water (Node2D)" parent="." instance=ExtResource("2_043lm")]
+z_index = -1
+position = Vector2(574.5, 324)
+scale = Vector2(4.61328, 1.92969)
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_pbjm4")
+expand_mode = 1
+
+[node name="Moon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 794.0
+offset_top = -271.0
+offset_right = 1406.0
+offset_bottom = 341.0
+flip_h = true
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.0
+offset_top = 177.0
+offset_right = 782.0
+offset_bottom = 1521.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_6nwqt")
+stretch_mode = 4
+
+[node name="MMB" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -367.5
+offset_top = 153.0
+offset_right = 368.5
+offset_bottom = 233.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_pbjm4")
+theme_override_font_sizes/font_size = 50
+text = "BUBBLE MAN"
+horizontal_alignment = 1
+
+[node name="m" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -425.0
+offset_top = 593.0
+offset_right = -191.0
+offset_bottom = 619.0
+grow_horizontal = 2
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("2_pbjm4")
+theme_override_font_sizes/font_size = 16
+text = "By Маги в джеме"
+
+[node name="Play hover2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 364.0
+offset_right = 829.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_shadow_color = Color(0.898039, 0.913725, 0.992157, 0.172549)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 50
+text = "Выход"
+horizontal_alignment = 1
+
+[node name="Play hover" type="Label" parent="."]
+layout_mode = 2
+offset_left = 323.0
+offset_top = 290.0
+offset_right = 830.0
+offset_bottom = 370.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_shadow_color = Color(0.898039, 0.913725, 0.992157, 0.172549)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 50
+text = "Играть"
+horizontal_alignment = 1
+
+[node name="Menu_button" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -38.0
+offset_right = 137.5
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_dmxns")
+
+[node name="Sound button" type="AudioStreamPlayer" parent="Menu_button"]
+stream = ExtResource("12_iesyu")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="SoundRate" type="Timer" parent="Menu_button/Sound button"]
+wait_time = 0.05
+one_shot = true
+
+[node name="TeachButton" type="Button" parent="Menu_button"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 50
+text = "Обучение"
+
+[node name="StartButton" type="Button" parent="Menu_button"]
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 50
+text = "Играть"
+
+[node name="QuitButton" type="Button" parent="Menu_button"]
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_t4idd")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 50
+text = "Выход"
+
+[node name="Sprite (Sprite2D)" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(974, 607)
+scale = Vector2(8.844, 8.543)
+script = ExtResource("6_bc54p")
+
+[node name="Body (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+texture = ExtResource("7_043lm")
+
+[node name="Hand (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
+unique_name_in_owner = true
+position = Vector2(-12, 6.6996)
+texture = ExtResource("8_iesyu")
+
+[node name="Left leg (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
+unique_name_in_owner = true
+position = Vector2(-3, 15)
+texture = ExtResource("9_iuxab")
+
+[node name="Right leg (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
+unique_name_in_owner = true
+position = Vector2(3, 15)
+texture = ExtResource("9_iuxab")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite (Sprite2D)"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_tjaii")
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_043lm")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="pressed" from="Menu_button/TeachButton" to="." method="_on_teach_button_pressed"]
+[connection signal="pressed" from="Menu_button/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu_button/QuitButton" to="." method="_on_quit_button_pressed"]

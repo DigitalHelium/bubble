@@ -42,5 +42,8 @@ func handle_fire_signal(emiting_time: float, spread_amount: float):
 	#print(emiting_time, spread_amount)
 	current_emiting_time = emiting_time
 	emitting = true
+	if $AudioStreamPlayer/SoundRate.time_left == 0:
+		$AudioStreamPlayer.play()
+		$AudioStreamPlayer/SoundRate.start()
 	process_material.set("spread", spread_amount)
 	
