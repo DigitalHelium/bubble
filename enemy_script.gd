@@ -24,6 +24,10 @@ var MAX_HEALTH = 300
 var current_health = MAX_HEALTH
 var is_dead = false
 
+var ruby = preload("res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn")
+var saphire = preload("res://gems/bubble gems/sapphire bubble gem/SapphireBubbleGem.tscn")
+var topaz = preload("res://gems/bubble gems/topaz bubble gem/TopazBubbleGem.tscn")
+
 # сигнал о смерти врага
 signal enemy_died
 
@@ -94,12 +98,25 @@ func kill_enemy() -> void:
 	current_target_position = calculate_escape_position()
 	print("сдох")
 	enemy_died.emit(self)
+	drop_gem_for_escape()
 	#emit_signal("enemy_died")
 	animation_attack.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(10).timeout
 	queue_free()
+
+func drop_gem_for_escape() -> void:
+	var gem_index = randi_range(0,2)
+	var gem
+	if gem_index == 0:
+		gem = ruby.instantiate()
+	elif gem_index == 1:
+		gem = saphire.instantiate()
+	else:
+		gem = topaz.instantiate()
+	gem.position = position
+	$"../".add_child(gem)
 
 func _on_timer_speed_timeout() -> void:
 	speed = DEFAULT_SPEED
