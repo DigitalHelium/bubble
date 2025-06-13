@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbehlv27oic11"]
+
+[ext_resource type="PackedScene" uid="uid://djb2ohwfikj11" path="res://gems/bubble gems/bubble gem/BubbleGem.tscn" id="1_aco2x"]
+[ext_resource type="Texture2D" uid="uid://dnuenbwiow3cu" path="res://texture/gems/sanhir.png" id="2_6c0bw"]
+[ext_resource type="Script" uid="uid://cuv8qtvf27cdu" path="res://gems/bubble gems/sapphire bubble gem/sapphire_bubble_gem.gd" id="2_ypcfj"]
+[ext_resource type="PackedScene" uid="uid://brn0m3eq7a041" path="res://gems/gems/sapphire gem/sapphire_gem.tscn" id="3_7i1v8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7kfx"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="SapphireBubbleGem" instance=ExtResource("1_aco2x")]
+script = ExtResource("2_ypcfj")
+gem = ExtResource("3_7i1v8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6c0bw")
+
+[node name="CollisionShape2D2" parent="." index="1"]
+shape = SubResource("CircleShape2D_i7kfx")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwxlp6aes5akp"]
+
+[ext_resource type="PackedScene" uid="uid://djb2ohwfikj11" path="res://gems/bubble gems/bubble gem/BubbleGem.tscn" id="1_3o4dn"]
+[ext_resource type="Texture2D" uid="uid://babwusppi1vgs" path="res://texture/gems/gold.png" id="2_3hoy4"]
+[ext_resource type="Script" uid="uid://cdbs2d3o3xsfr" path="res://gems/bubble gems/topaz bubble gem/topaz_bubble_gem.gd" id="2_28hsu"]
+[ext_resource type="PackedScene" uid="uid://c3rxcnn11mikg" path="res://gems/gems/topaz gem/topaz_gem.tscn" id="3_hbksn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpd8j"]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="TopazBubbleGem" instance=ExtResource("1_3o4dn")]
+script = ExtResource("2_28hsu")
+gem = ExtResource("3_hbksn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3hoy4")
+
+[node name="CollisionShape2D2" parent="." index="1"]
+shape = SubResource("CircleShape2D_qpd8j")

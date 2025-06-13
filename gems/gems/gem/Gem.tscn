@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://befqatsuijcyr"]
+[gd_scene load_steps=3 format=3 uid="uid://befqatsuijcyr"]
+
+[ext_resource type="Script" uid="uid://xuy36a0qilhe" path="res://gems/gems/gem/gem.gd" id="1_hnrki"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7otay"]
 radius = 4.0
@@ -7,6 +9,7 @@ radius = 4.0
 collision_layer = 512
 collision_mask = 768
 mass = 10.0
+script = ExtResource("1_hnrki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7otay")

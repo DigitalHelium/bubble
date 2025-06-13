@@ -119,7 +119,6 @@ radius = 30.0
 max_neighbors = 1
 avoidance_layers = 3
 avoidance_mask = 3
-debug_enabled = true
 
 [node name="Timer (Navigation)" type="Timer" parent="."]
 wait_time = 0.25

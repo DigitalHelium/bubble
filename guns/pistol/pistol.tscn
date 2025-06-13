@@ -5,3 +5,6 @@
 
 [node name="Pistol" instance=ExtResource("1_x8b8f")]
 script = ExtResource("2_4vo22")
+
+[node name="GunSprite" parent="." index="0"]
+position = Vector2(-7, 0)

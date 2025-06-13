@@ -57,6 +57,6 @@ func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> vo
 	direction = gun_direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("LKKL 222")
 	if body.has_method("collect"):
-		body.collect()
+		var gem = body.collect()
+		add_child(gem)

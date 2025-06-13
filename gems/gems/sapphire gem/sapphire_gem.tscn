@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://brn0m3eq7a041"]
+
+[ext_resource type="PackedScene" uid="uid://befqatsuijcyr" path="res://gems/gems/gem/Gem.tscn" id="1_brwgl"]
+[ext_resource type="Texture2D" uid="uid://dnuenbwiow3cu" path="res://texture/gems/sanhir.png" id="2_x131b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlvac"]
+radius = 3.0
+height = 10.0
+
+[node name="SapphireGem" instance=ExtResource("1_brwgl")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_dlvac")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_x131b")
