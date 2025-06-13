@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=16 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="5_bq5eh"]
 [ext_resource type="Texture2D" uid="uid://cya8bxkkoln0g" path="res://texture/main bubble/bubble front.png" id="7_1pwmh"]
+[ext_resource type="Texture2D" uid="uid://bxx2aowytb8yr" path="res://texture/background_menu/metal.png" id="7_tjaii"]
 [ext_resource type="PackedScene" uid="uid://cnib1exrof02v" path="res://upgrade menu/UpgradeScreen.tscn" id="8_1pwmh"]
+[ext_resource type="PackedScene" uid="uid://byhdaldj8daj8" path="res://setting/Control.tscn" id="10_3yu2f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
@@ -147,6 +149,21 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
+[node name="Setting Button" type="Button" parent="Camera2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 260.0
+offset_top = -158.0
+offset_right = 300.0
+offset_bottom = -118.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme_override_colors/icon_hover_color = Color(0.620121, 0.729639, 0.979052, 1)
+icon = ExtResource("7_tjaii")
+flat = true
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 128
@@ -176,6 +193,17 @@ autostart = true
 
 [node name="UpgradeScreen" parent="." instance=ExtResource("8_1pwmh")]
 
+[node name="Settings" parent="." instance=ExtResource("10_3yu2f")]
+visible = false
+z_index = 12
+offset_left = -127.0
+offset_top = -94.0
+offset_right = 381.0
+offset_bottom = 272.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="Camera2D/Setting Button" to="." method="_on_setting_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -84,7 +84,8 @@ func receive_damage() -> void:
 	pass
 
 func kill_player() -> void:
-	queue_free()
+	SceneTransition.change_scene("res://menu/Kill Player.tscn")
+	#queue_free()
 	pass
 
 func decrease_bubble_size() -> void:
@@ -117,3 +118,16 @@ func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
 	if card.func_callable != null:
 		card.func_callable.call(self, card.card_args)
 	upgrade_screen.visible = false
+	
+
+func _on_setting_button_pressed() -> void:
+	var scene_setting = preload("res://setting/Control.tscn")
+	var scene =  scene_setting.instantiate()
+	scene.set_scale(Vector2(0.5, 0.5))
+	scene.set_position(Vector2(-120,-100))
+	scene.set_z_index(12)
+	add_child(scene)
+	get_tree().paused = true
+	
+	#$Settings.visible = true
+	#get_tree().paused = true

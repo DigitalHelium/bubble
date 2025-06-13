@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d3pivpnsfaji2" path="res://texture/tilemaps/Magi v jame png (2).png" id="1_6nwqt"]
 [ext_resource type="Script" uid="uid://brrq4u6e5qasw" path="res://menu/menu.gd" id="1_bc54p"]
 [ext_resource type="Texture2D" uid="uid://bgvbl8ex3qdb0" path="res://texture/background_menu/bfe38a8f305e967cecab52493d5cf3f2.jpg" id="1_pbjm4"]
-[ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="2_043lm"]
+[ext_resource type="PackedScene" uid="uid://crru5edsy2sue" path="res://background_water_scene.tscn" id="2_043lm"]
 [ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="2_pbjm4"]
 [ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="3_svuvw"]
 [ext_resource type="Script" uid="uid://rglsi46gyp70" path="res://sprite_character.gd" id="6_bc54p"]
@@ -119,7 +119,7 @@ script = ExtResource("1_bc54p")
 [node name="Background Water (Node2D)" parent="." instance=ExtResource("2_043lm")]
 z_index = -1
 position = Vector2(574.5, 324)
-scale = Vector2(0.0078125, 0.0078125)
+scale = Vector2(4.61328, 2.41406)
 
 [node name="Background" type="TextureRect" parent="."]
 visible = false
@@ -159,10 +159,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -367.5
-offset_top = 153.0
-offset_right = 368.5
-offset_bottom = 233.0
+offset_left = -368.0
+offset_top = 110.0
+offset_right = 368.0
+offset_bottom = 190.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 1
@@ -191,6 +191,7 @@ theme_override_font_sizes/font_size = 16
 text = "By Маги в джеме"
 
 [node name="Play hover3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 322.0
 offset_top = 363.0
 offset_right = 829.0

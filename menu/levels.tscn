@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dvkf4gxb5t0ef"]
 
 [ext_resource type="Script" uid="uid://cg6dnefhapc3e" path="res://menu/levels.gd" id="1_wo31f"]
-[ext_resource type="PackedScene" path="res://background_water_scene.tscn" id="2_u4eie"]
+[ext_resource type="PackedScene" uid="uid://crru5edsy2sue" path="res://background_water_scene.tscn" id="2_u4eie"]
 [ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="4_lyh8m"]
 [ext_resource type="AudioStream" uid="uid://csh85gd8h0oq8" path="res://sound/фоновая веселая музыка.mp3" id="4_tlu08"]
 [ext_resource type="Script" uid="uid://b1cl4rfkix0hx" path="res://menu/menu_button_2.gd" id="4_xxm61"]

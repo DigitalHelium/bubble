@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbudp5r0w33xl"]
+[gd_scene load_steps=4 format=3 uid="uid://crru5edsy2sue"]
 
 [ext_resource type="Material" uid="uid://bpdfqx50a403e" path="res://background_water_material.tres" id="1_3opfl"]
 [ext_resource type="Texture2D" uid="uid://be6iv1qobudvt" path="res://texture/Marble 14 - 256x256.png" id="2_jvu88"]
@@ -6,6 +6,7 @@
 
 [node name="Background Water (Node2D)" type="Sprite2D"]
 material = ExtResource("1_3opfl")
+scale = Vector2(4.61328, 2.41406)
 texture = ExtResource("2_jvu88")
 script = ExtResource("3_jvu88")
 

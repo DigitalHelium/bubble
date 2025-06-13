@@ -49,7 +49,7 @@ script = ExtResource("5_6ncdk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GunSprite/GPUParticles2D"]
 stream = ExtResource("6_6fpm8")
-volume_db = -15.0
+volume_db = -30.0
 
 [node name="SoundRate" type="Timer" parent="GunSprite/GPUParticles2D/AudioStreamPlayer"]
 wait_time = 0.6

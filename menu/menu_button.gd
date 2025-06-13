@@ -11,22 +11,11 @@ func _process(delta: float) -> void:
 		$"Sound button/SoundRate".stop()
 		flag = false
 		
-	if $QuitButton.is_hovered()  and $"Sound button/SoundRate".time_left == 0 and !flag2:
-		$"Sound button".play()
-		$"Sound button/SoundRate".start()
-		flag2 = true
-	if !$QuitButton.is_hovered() and flag2:
-		$"Sound button/SoundRate".stop()
-		flag2 = false
-
-	if $TeachButton.is_hovered() and $"Sound button/SoundRate".time_left == 0 and !flag3:
-		$"Sound button".play()
-		$"Sound button/SoundRate".start()
-		flag3 = true
-	if !$TeachButton.is_hovered() and flag3:
-		$"Sound button/SoundRate".stop()
-		flag3 = false
-		
 	
 
 	
+
+
+func _on_start_button_pressed() -> void:
+	
+	SceneTransition.change_scene("res://menu/levels.tscn")

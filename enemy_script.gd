@@ -6,7 +6,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animation_legs := $"AnimatedSprite2D (Legs)"
 @onready var timer_deceleration := $"Timer (Speed)"
 
-var DEFAULT_SPEED = 300
+var DEFAULT_SPEED = 200
 var SPEED_DECELERATION = 150
 var LOOK_ACCELERATION = 10
 var ACCELERATION = 0.01

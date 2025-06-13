@@ -59,4 +59,5 @@ func _on_sound_mute_toggled(toggled_on: bool) -> void:
 func _on_menu_button_pressed() -> void:
 	%AnimationSettings.play("animation_end")
 	await  %AnimationSettings.animation_finished
+	get_tree().paused = false
 	queue_free()
