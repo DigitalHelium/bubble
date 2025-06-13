@@ -15,6 +15,12 @@ run/main_scene="uid://ct0wuhmli5bd6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://test scenes/": "purple"
+}
+
 [input]
 
 click={

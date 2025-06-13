@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bpdfqx50a403e" path="res://background_water_material.tres" id="1_3opfl"]
 [ext_resource type="Texture2D" uid="uid://be6iv1qobudvt" path="res://texture/Marble 14 - 256x256.png" id="2_jvu88"]
-[ext_resource type="Script" path="res://background_water_script.gd" id="3_jvu88"]
+[ext_resource type="Script" uid="uid://b1a3qpa8ar66k" path="res://background_water_script.gd" id="3_jvu88"]
 
 [node name="Background Water (Node2D)" type="Sprite2D"]
 material = ExtResource("1_3opfl")
