@@ -23,3 +23,11 @@ func init(card_impl: CardClass):
 
 func _on_pressed() -> void:
 	pick_card.emit(card)
+
+func _on_mouse_entered() -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE * 1.2, 0.3)
+
+func _on_mouse_exited() -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE, 0.3)

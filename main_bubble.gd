@@ -6,6 +6,7 @@ class_name BubbleCharacter extends CharacterBody2D
 @export var mission_target : Node2D
 @onready var nav := $NavigationAgent2D
 @onready var upgrade_screen := $UpgradeScreen
+@onready var wallet := $Wallet
 var current_gun = null
 
 var gun_scenes = {
@@ -21,9 +22,7 @@ var next_mission_direction
 var max_health : int = 3 #Максимальное здоровье
 var current_health : int = max_health #Текущее здоровье
 
-var ruby_count : int = 0
-var sapphire_count : int = 0
-var topaz_count : int = 0
+var gem_count : int = 0
 
 
 signal velocity_update_signal
@@ -71,9 +70,15 @@ func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> vo
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
-		var gem = body.collect()
-		add_child(gem)
-
+		var gem: Gem = body.collect()
+		gem_count += gem.cost
+		$Count.text = '+'+str(gem.cost)
+		$Count.visible = true
+		$CountTimer.start()
+		wallet.add_child(gem)
+		
+func _on_count_timer_timeout() -> void:
+	$Count.visible = false
 
 func receive_damage() -> void:
 	current_health -=1
@@ -100,13 +105,14 @@ func _on_timer_timeout() -> void:
 			next_mission_direction = to_global((nav.get_current_navigation_path().get(3) - position))
 			
 			
-func open_upgrade_screen(cards: Array[UpgradeCard.CardClass]):
+func open_upgrade_screen(cards: Array[UpgradeCard.CardClass], func_callable: Callable):
 	upgrade_screen.visible = true
 	upgrade_screen.clear_card()
 	for card in cards:
 		var card_instans = preload("res://upgrade cards/UpgradeCard.tscn").instantiate()
 		card_instans.init(card)
 		upgrade_screen.add_card(card_instans);
+	func_callable.call(self)
 
 func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
 	if card.func_callable != null:

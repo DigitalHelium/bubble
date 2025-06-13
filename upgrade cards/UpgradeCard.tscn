@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2tp5lvo37id2"]
+[gd_scene load_steps=5 format=3 uid="uid://b2tp5lvo37id2"]
 
 [ext_resource type="Script" uid="uid://bywrm3688eiio" path="res://upgrade cards/upgrade_card.gd" id="1_idhpl"]
+[ext_resource type="Texture2D" uid="uid://mon4y28r6ucb" path="res://texture/card/card.png" id="2_swn56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v74sy"]
+font_size = 20
+font_color = Color(0.117647, 0.164706, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_seiuc"]
+font_color = Color(0.117647, 0.164706, 0.286275, 1)
 
 [node name="UpgradeCard" type="Button"]
-custom_minimum_size = Vector2(250, 370)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 336.69)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -12,26 +21,41 @@ anchor_bottom = 0.5
 offset_left = -125.0
 offset_top = -185.0
 offset_right = 125.0
-offset_bottom = 185.0
+offset_bottom = 151.69
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(125, 185)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_idhpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(124.75, 167.208)
+scale = Vector2(4.24576, 4.24576)
+texture = ExtResource("2_swn56")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-offset_left = 106.0
-offset_right = 143.0
-offset_bottom = 23.0
+offset_left = 30.0
+offset_top = 26.0
+offset_right = 219.0
+offset_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Card"
+label_settings = SubResource("LabelSettings_v74sy")
+horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 117.0
-offset_bottom = 246.0
+offset_left = 34.0
+offset_top = 163.0
+offset_right = 211.0
+offset_bottom = 293.0
 text = "Description"
+label_settings = SubResource("LabelSettings_seiuc")
+text_overrun_behavior = 2
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

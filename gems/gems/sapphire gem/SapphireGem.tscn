@@ -8,6 +8,7 @@ radius = 3.0
 height = 10.0
 
 [node name="SapphireGem" instance=ExtResource("1_brwgl")]
+cost = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_dlvac")

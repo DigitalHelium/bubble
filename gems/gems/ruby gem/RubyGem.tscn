@@ -7,7 +7,7 @@
 radius = 4.0
 height = 10.0
 
-[node name="Gem" instance=ExtResource("1_gdp85")]
+[node name="RubyGem" instance=ExtResource("1_gdp85")]
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_sngim")
