@@ -28,6 +28,7 @@ var topaz_count : int = 0
 
 signal velocity_update_signal
 signal enemy_push_after_damage_signal
+signal change_bubble_after_damage_signal
 
 func _ready() -> void:
 	change_weapon("shotgun")
@@ -78,7 +79,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func receive_damage() -> void:
 	current_health -=1
 	decrease_bubble_size()
-	print(current_health)
 	if current_health <= 0:
 		kill_player()
 	pass
@@ -89,6 +89,11 @@ func kill_player() -> void:
 
 func decrease_bubble_size() -> void:
 	enemy_push_after_damage_signal.emit(1.5)
+	var scale_decrease = 1.5
+	$"Collision (CollisionShape2D)2".scale /= scale_decrease
+	$Area2D/CollisionShape2D.scale /= scale_decrease
+	$AnimatableBody2D/CollisionPolygon2D.scale /= scale_decrease
+	$Sprite2D.scale /= scale_decrease
 	pass
 
 func _on_timer_timeout() -> void:
