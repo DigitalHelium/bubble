@@ -14,9 +14,12 @@ var gun_scenes = {
 	"gatling": preload("res://guns/gatling/gatling.tscn")
 }
 
-var acceleration : float = 0
-var direction : Vector2
+var acceleration : float = 0 #Ускориение персонажа
+var direction : Vector2 #Направление стрельбы
 var next_mission_direction
+
+var max_health : int = 3 #Максимальное здоровье
+var current_health : int = max_health #Текущее здоровье
 
 var ruby_count : int = 0
 var sapphire_count : int = 0
@@ -24,9 +27,10 @@ var topaz_count : int = 0
 
 
 signal velocity_update_signal
+signal enemy_push_after_damage_signal
 
 func _ready() -> void:
-	change_weapon("gatling")
+	change_weapon("shotgun")
 	
 func change_weapon(weapon_name: String):
 	if weapon_name in gun_scenes:
@@ -69,8 +73,23 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
 		var gem = body.collect()
 		add_child(gem)
-	
 
+
+func receive_damage() -> void:
+	current_health -=1
+	decrease_bubble_size()
+	print(current_health)
+	if current_health <= 0:
+		kill_player()
+	pass
+
+func kill_player() -> void:
+	queue_free()
+	pass
+
+func decrease_bubble_size() -> void:
+	enemy_push_after_damage_signal.emit(1.5)
+	pass
 
 func _on_timer_timeout() -> void:
 	if mission_target != null:
