@@ -1,10 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://v42km8r0ms42"]
 
+[ext_resource type="Script" uid="uid://smrvfteyhh34" path="res://menu/color_rect.gd" id="1_uanh7"]
 [ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="1_xw02a"]
-[ext_resource type="Script" uid="uid://dkgko1pxw0i4e" path="res://menu/menu_button.gd" id="2_rbtrg"]
 [ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="3_dc7y4"]
-
-[sub_resource type="Theme" id="Theme_uanh7"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="4_dc7y4"]
 
 [node name="KillPlayer" type="Control"]
 layout_mode = 3
@@ -24,18 +23,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0431373, 0.521569, 0.737255, 0.992157)
+script = ExtResource("1_uanh7")
 
 [node name="Play hover3" type="Label" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.446
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -266.5
-offset_top = -124.0
-offset_right = 266.5
-offset_bottom = 68.0
+offset_left = -349.0
+offset_top = -96.008
+offset_right = 352.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -46,66 +46,54 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 7
 theme_override_fonts/font = ExtResource("1_xw02a")
 theme_override_font_sizes/font_size = 50
-text = "НЕУДАЧА!
-
-ПОПРОБУЙ ЕЩЕ РАЗ"
+text = "ОН НЕ УМЕР В КОНЦЕ...
+ВЫПЛЫЛ, ЧЕСТНО
+#БЕЗ_НАСИЛИЯ"
 horizontal_alignment = 1
 
-[node name="Menu_button" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = 176.0
-offset_right = 137.5
-offset_bottom = 394.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_rbtrg")
-
-[node name="Sound button" type="AudioStreamPlayer" parent="Menu_button"]
+[node name="Sound button" type="AudioStreamPlayer" parent="ColorRect"]
 stream = ExtResource("3_dc7y4")
 volume_db = -15.0
 bus = &"Sound"
 
-[node name="SoundRate" type="Timer" parent="Menu_button/Sound button"]
+[node name="SoundRate" type="Timer" parent="ColorRect/Sound button"]
 wait_time = 0.05
 one_shot = true
 
-[node name="StartButton" type="Button" parent="Menu_button"]
+[node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 2
+offset_left = 1067.0
+offset_top = -7.0
+offset_right = 1156.0
+offset_bottom = 81.0
 focus_mode = 0
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_xw02a")
+theme_override_fonts/font = ExtResource("4_dc7y4")
 theme_override_font_sizes/font_size = 50
-text = "Играть"
+text = "x"
 
-[node name="TeachButton" type="Button" parent="Menu_button"]
-visible = false
-layout_mode = 2
+[node name="StartButton" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.5
+offset_top = -188.0
+offset_right = 168.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
 focus_mode = 0
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_xw02a")
+theme_override_fonts/font = ExtResource("4_dc7y4")
 theme_override_font_sizes/font_size = 50
-text = "Настройки"
+text = "ЗАНОВО"
 
-[node name="QuitButton" type="Button" parent="Menu_button"]
-visible = false
-layout_mode = 2
-focus_mode = 0
-theme = SubResource("Theme_uanh7")
-theme_type_variation = &"FlatButton"
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_xw02a")
-theme_override_font_sizes/font_size = 50
-text = "Выход"
-
-[connection signal="pressed" from="Menu_button/StartButton" to="Menu_button" method="_on_start_button_pressed"]
+[connection signal="pressed" from="ColorRect/Close" to="ColorRect" method="_on_close_pressed"]
+[connection signal="pressed" from="ColorRect/StartButton" to="ColorRect" method="_on_start_button_pressed"]
