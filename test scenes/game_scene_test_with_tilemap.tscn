@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cyeyy16cdeicr" path="res://texture/tilemaps/tilemap.png" id="3_03xkv"]
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="3_noxx7"]
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="4_i1s7y"]
-[ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/RubyBubbleGem.tscn" id="7_tmsp2"]
-[ext_resource type="PackedScene" uid="uid://cje61erorswap" path="res://gems/RubyGem.tscn" id="8_wm3jm"]
-[ext_resource type="Script" uid="uid://sm5c8xycmlcu" path="res://gems/gem.gd" id="9_6fw1k"]
+[ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn" id="7_tmsp2"]
+[ext_resource type="PackedScene" uid="uid://bbehlv27oic11" path="res://gems/bubble gems/sapphire bubble gem/SapphireBubbleGem.tscn" id="8_6fw1k"]
+[ext_resource type="PackedScene" uid="uid://dwxlp6aes5akp" path="res://gems/bubble gems/topaz bubble gem/TopazBubbleGem.tscn" id="9_bh53p"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4i1r"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -912,46 +912,128 @@ position = Vector2(149, 37)
 [node name="Enemy (CharacterBody2D)3" parent="." instance=ExtResource("4_i1s7y")]
 position = Vector2(526, 262)
 
-[node name="Gem" parent="." instance=ExtResource("7_tmsp2")]
-position = Vector2(144, 233)
-input_pickable = true
+[node name="RubyBubbleGem" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(119, 192)
 
-[node name="Gem2" parent="." instance=ExtResource("7_tmsp2")]
-position = Vector2(226, 240)
-input_pickable = true
+[node name="SapphireBubbleGem" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(290, 230)
 
-[node name="Gem3" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="TopazBubbleGem" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(409, 102)
 
-[node name="Gem4" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="TopazBubbleGem2" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(137, 234)
 
-[node name="Gem5" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="SapphireBubbleGem2" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(78, 193)
 
-[node name="Gem6" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="SapphireBubbleGem3" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(107, 219)
 
-[node name="Gem7" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="SapphireBubbleGem4" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(73, 230)
 
-[node name="Gem8" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-script = ExtResource("9_6fw1k")
+[node name="RubyBubbleGem2" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(107, 157)
+
+[node name="RubyBubbleGem3" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(150, 200)
+
+[node name="RubyBubbleGem4" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(16, 200)
+
+[node name="SapphireBubbleGem5" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(38, 218)
+
+[node name="TopazBubbleGem3" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(25, 253)
+
+[node name="TopazBubbleGem4" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(11, 233)
+
+[node name="SapphireBubbleGem6" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-18, 219)
+
+[node name="RubyBubbleGem5" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-30, 248)
+
+[node name="RubyBubbleGem6" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(1, 265)
+
+[node name="RubyBubbleGem7" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-10, 242)
+
+[node name="RubyBubbleGem8" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-45, 229)
+
+[node name="RubyBubbleGem9" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-75, 253)
+
+[node name="SapphireBubbleGem7" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-58, 201)
+
+[node name="TopazBubbleGem5" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-86, 225)
+
+[node name="TopazBubbleGem6" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-28, 196)
+
+[node name="RubyBubbleGem10" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-67, 230)
+
+[node name="SapphireBubbleGem8" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-46, 269)
+
+[node name="TopazBubbleGem7" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-95, 193)
+
+[node name="SapphireBubbleGem9" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-117, 210)
+
+[node name="RubyBubbleGem11" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-122, 170)
+
+[node name="SapphireBubbleGem10" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-110, 241)
+
+[node name="SapphireBubbleGem11" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-168, 189)
+
+[node name="TopazBubbleGem8" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-180, 212)
+
+[node name="RubyBubbleGem12" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-149, 197)
+
+[node name="SapphireBubbleGem12" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-151, 224)
+
+[node name="TopazBubbleGem9" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-205, 190)
+
+[node name="RubyBubbleGem13" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-191, 160)
+
+[node name="SapphireBubbleGem13" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-157, 162)
+
+[node name="TopazBubbleGem10" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-97, 162)
+
+[node name="SapphireBubbleGem14" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-183, 139)
+
+[node name="RubyBubbleGem14" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-133, 149)
+
+[node name="RubyBubbleGem15" parent="." instance=ExtResource("7_tmsp2")]
+position = Vector2(-217, 145)
+
+[node name="SapphireBubbleGem15" parent="." instance=ExtResource("8_6fw1k")]
+position = Vector2(-231, 169)
+
+[node name="TopazBubbleGem11" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-252, 200)
+
+[node name="TopazBubbleGem12" parent="." instance=ExtResource("9_bh53p")]
+position = Vector2(-237, 225)

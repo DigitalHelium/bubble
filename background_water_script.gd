@@ -18,7 +18,7 @@ func calculate_aspect_ratio():
 	material.set_shader_parameter("aspect_ratio", scale.y / scale.x)
 
 func handle_movement_signel(character_position: Vector2):
-	print(character_position)
+	#print(character_position)
 	current_velocity = character_position * 0.0001
 	material.set_shader_parameter("movement_direction", current_velocity)
 
