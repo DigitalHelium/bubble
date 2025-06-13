@@ -1,4 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=14 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
@@ -7,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
 [ext_resource type="Texture2D" uid="uid://crmyjchr7apu" path="res://texture/leg.png" id="5_bq5eh"]
 [ext_resource type="Texture2D" uid="uid://cya8bxkkoln0g" path="res://texture/main bubble/bubble front.png" id="7_1pwmh"]
-[ext_resource type="PackedScene" uid="uid://cnib1exrof02v" path="res://upgrade menu/UpgradeScreen.tscn" id="8_1pwmh"]
+[ext_resource type="Script" uid="uid://c4mod36qu00vy" path="res://main_bubble_camera_script.gd" id="7_tjaii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
@@ -146,6 +147,7 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+script = ExtResource("7_tjaii")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64

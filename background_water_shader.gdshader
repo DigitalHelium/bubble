@@ -51,7 +51,7 @@ void fragment() {
 	vec2 time2 = get_wave_uv(vec2(2,1), 0.007, uv) + get_flow_uv(movement_direction);
 	vec2 time3 = get_wave_uv(vec2(0.5,1.5), 0.008, uv) + get_flow_uv(movement_direction);
 	vec2 time4 = get_wave_uv(vec2(0.1,0.6), 0.009, uv) + get_flow_uv(movement_direction);
-	
+
 
 	uv = round(uv * resolution) / resolution;
 
