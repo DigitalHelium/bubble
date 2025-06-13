@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://berf8wm6pfcr7"]
+
+[ext_resource type="Texture2D" uid="uid://bdj6vhq1wtn6w" path="res://texture/jellyfish/jellyfish_body.png" id="1_lyi7v"]
+[ext_resource type="Script" uid="uid://bewku7v5hxk33" path="res://jellyfish/jellyfish.gd" id="1_vkyvp"]
+[ext_resource type="Texture2D" uid="uid://csek2k06yea2s" path="res://texture/jellyfish/jellyfish_eye.png" id="2_y0qvs"]
+[ext_resource type="Script" uid="uid://dstjc7s0wgs6p" path="res://jellyfish/jellyfish_eye.gd" id="3_y0qvs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkyvp"]
+radius = 9.0
+
+[node name="Jellyfish" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_vkyvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lyi7v")
+
+[node name="JellyfishEye" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("2_y0qvs")
+script = ExtResource("3_y0qvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_vkyvp")

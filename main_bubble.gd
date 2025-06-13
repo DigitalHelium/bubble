@@ -3,6 +3,8 @@ class_name BubbleCharacter extends CharacterBody2D
 @export var max_speed : float = 220.0
 @export var max_acceleration : float = 100.0
 @export var friction : float = 3.0
+@export var mission_target : Node2D
+@onready var nav := $NavigationAgent2D
 var current_gun = null
 
 var gun_scenes = {
@@ -13,6 +15,7 @@ var gun_scenes = {
 
 var acceleration : float = 0
 var direction : Vector2
+var next_mission_direction
 
 signal velocity_update_signal
 
@@ -60,3 +63,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
 		var gem = body.collect()
 		add_child(gem)
+
+
+func _on_timer_timeout() -> void:
+	if mission_target != null:
+		nav.target_position = mission_target.position
+		nav.get_next_path_position()
+		if nav.get_current_navigation_path().size() > 3:
+		#next_mission_direction = nav.get_current_navigation_path(3)
+			next_mission_direction = to_global((nav.get_current_navigation_path().get(3) - position))
