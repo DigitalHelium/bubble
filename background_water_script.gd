@@ -13,8 +13,7 @@ func _ready():
 	scale = viewpoert_size / texture_size
 
 func calculate_aspect_ratio():
-	#print(scale.y / scale.x)	
-	#print(scale.y / scale.x)	
+	#print(scale.y / scale.x)
 	material.set_shader_parameter("aspect_ratio", scale.y / scale.x)
 
 func handle_movement_signel(character_position: Vector2):

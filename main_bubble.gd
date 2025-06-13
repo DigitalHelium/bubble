@@ -7,7 +7,8 @@ var current_gun = null
 
 var gun_scenes = {
 	"pistol": preload("res://guns/pistol/pistol.tscn"),
-	"shotgun": preload("res://guns/shotgun/shotgun.tscn")
+	"shotgun": preload("res://guns/shotgun/shotgun.tscn"),
+	"gatling": preload("res://guns/gatling/gatling.tscn")
 }
 
 var acceleration : float = 0
@@ -16,7 +17,7 @@ var direction : Vector2
 signal velocity_update_signal
 
 func _ready() -> void:
-	change_weapon("pistol")
+	change_weapon("gatling")
 	
 func change_weapon(weapon_name: String):
 	if weapon_name in gun_scenes:

@@ -1,4 +1,4 @@
-﻿class_name BaseGun extends Node2D
+class_name BaseGun extends Node2D
 
 var button_time_held = 0.0
 
@@ -7,10 +7,16 @@ signal fire_particle_signal
 
 @export var acceleration : float = 30.0
 @export var particle_damage : int = 25
-@export var reload: float = 0.2
+@export var shot_rejection: int = 10
+@export var reload_time: float = 0.2
+@export var spread_amount: float = 1
+
 @export var start_damage_duration: float = 0.2
+@export var duration_shot_fire: float = 0.1
+
 @export var radius = 32.0
 @export var damageAreaSize: Vector2 = Vector2(100, 50) 
+
 @onready var character : BubbleCharacter = null
 
 var direction : Vector2
@@ -45,9 +51,9 @@ func calc_held_time(delta: float, button_time_held: float) -> float:
 func check_if_shot_fired(button_time_held: float, direction : Vector2) -> float:
 	if button_time_held < 0:
 		fire_signal.emit(acceleration, direction)
-		fire_particle_signal.emit(reload)
+		fire_particle_signal.emit(reload_time, spread_amount)
 		start_damage_detection(start_damage_duration)
-		return 0.1
+		return duration_shot_fire
 	return button_time_held
 
 func start_damage_detection(duration: float) -> void:
@@ -68,7 +74,7 @@ func stop_damage_detection() -> void:
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and is_firing:
-		body.take_damage(particle_damage)
+		body.take_damage(particle_damage, shot_rejection)
 		print("Урон: ", particle_damage)
 
 func _physics_process(delta) -> void:

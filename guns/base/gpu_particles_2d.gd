@@ -1,4 +1,4 @@
-﻿class_name GpuParticles extends GPUParticles2D
+class_name GpuParticles extends GPUParticles2D
 
 @onready var gun: BaseGun = get_parent().get_parent()
 
@@ -38,7 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 	
-func handle_fire_signal(emiting_time: float):
+func handle_fire_signal(emiting_time: float, spread_amount: float):
+	print(emiting_time, spread_amount)
 	current_emiting_time = emiting_time
 	emitting = true
+	process_material.set("spread", spread_amount)
 	

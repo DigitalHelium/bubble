@@ -57,7 +57,7 @@ func _on_timer_timeout() -> void:
 		return
 	nav.target_position = target.position
 
-func take_damage(damage_amount: int) -> void:
+func take_damage(damage_amount: int, shot_rejection: int) -> void:
 	if is_dead:
 		return
 		
