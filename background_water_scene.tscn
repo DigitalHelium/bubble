@@ -6,7 +6,7 @@
 
 [node name="Background Water (Node2D)" type="Sprite2D"]
 material = ExtResource("1_3opfl")
-scale = Vector2(4.61328, 2.41406)
+scale = Vector2(7.33594, 4.37109)
 texture = ExtResource("2_jvu88")
 script = ExtResource("3_jvu88")
 

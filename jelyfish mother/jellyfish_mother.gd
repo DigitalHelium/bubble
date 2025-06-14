@@ -45,14 +45,14 @@ func change_property(player: BubbleCharacter, properties: Dictionary):
 func buy(player: BubbleCharacter):
 	if player.gem_count < next_upgrade_price:
 		return
-	var price = 0
-	var i = 0;
-	while i < player.wallet.get_children().size() and price < next_upgrade_price:
-		price += player.wallet.get_children().get(i).cost
-		print(i, '/', player.wallet.get_children().size(), ' ', player.wallet.get_children().get(i).cost, ' ', price)
-		player.wallet.get_children().get(i).queue_free()
-		i += 1
-	player.gem_count -= price
+	#var price = 0
+	#var i = 0;
+	#while i < player.wallet.get_children().size() and price < next_upgrade_price:
+		#price += player.wallet.get_children().get(i).cost
+		#print(i, '/', player.wallet.get_children().size(), ' ', player.wallet.get_children().get(i).cost, ' ', price)
+		#player.wallet.get_children().get(i).queue_free()
+		#i += 1
+	player.handle_buy(next_upgrade_price)
 	next_upgrade_price += next_coast
 	$Price.text = str(next_upgrade_price)
 	print(player.gem_count)

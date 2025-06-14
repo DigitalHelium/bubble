@@ -7,7 +7,7 @@ class_name BubbleCharacter extends CharacterBody2D
 @onready var nav := $NavigationAgent2D
 @onready var upgrade_screen := $UpgradeScreen
 @onready var wallet := $Wallet
-var current_gun = null
+var current_gun : BaseGun = null
 
 var gun_scenes = {
 	"pistol": preload("res://guns/pistol/pistol.tscn"),
@@ -82,8 +82,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func handle_buy(price: int) -> void:
 	wallet.get_children().sort_custom(custom_array_sort)
-	for child in wallet.get_children():
-		print(child)
+	for i in range(wallet.get_children().size()):
+		if price > 0:
+			var child = wallet.get_child(i)
+			if child.cost < price:
+				gem_count -= child.cost
+				price -= child.cost
+			else:
+				price = 0
+				for j in range(child.cost - price):
+					print(j)
+					var gem: Gem = load("res://gems/gems/ruby gem/RubyGem.tscn").instantiate()
+					gem_count += gem.cost
+					wallet.add_child(gem)
+			child.queue_free()
 	pass
 	
 func custom_array_sort(a : int, b: int) -> bool:
@@ -92,7 +104,7 @@ func custom_array_sort(a : int, b: int) -> bool:
 	return false
 	
 func receive_damage() -> void:
-	current_health -=1
+	current_health -= 1
 	decrease_bubble_size()
 	if current_health <= 0:
 		kill_player()
@@ -103,6 +115,7 @@ func kill_player() -> void:
 	#queue_free()
 	pass
 
+#Уменьшить размер
 func decrease_bubble_size() -> void:
 	enemy_push_after_damage_signal.emit(1.5)
 	var scale_decrease = 1.5
@@ -113,6 +126,25 @@ func decrease_bubble_size() -> void:
 	$"Sprite (Sprite2D)".scale /= scale_decrease
 	pass
 
+#Увеличить размер
+func increase_bubble_size() -> void:
+	var scale_decrease = 1.5
+	$"Collision (CollisionShape2D)2".scale *= scale_decrease
+	$Area2D/CollisionShape2D.scale *= scale_decrease
+	$AnimatableBody2D/CollisionPolygon2D.scale *= scale_decrease
+	$Sprite2D.scale *= scale_decrease
+	$"Sprite (Sprite2D)".scale *= scale_decrease
+	pass
+
+#Заменить управление на колесо
+func change_control_type_to_wheel() -> void:
+	current_gun.is_mouse_wheel = true
+
+#Заменить управление на мышь
+func change_control_type_to_mouse() -> void:
+	current_gun.is_mouse_wheel = false
+	
+	
 func _on_timer_timeout() -> void:
 	if mission_target != null:
 		nav.target_position = mission_target.position
