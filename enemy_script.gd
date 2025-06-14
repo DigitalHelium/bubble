@@ -107,11 +107,12 @@ func kill_enemy() -> void:
 	queue_free()
 
 func drop_gem_for_escape() -> void:
-	var gem_index = randi_range(0,2)
+	var gem_percent = randi_range(0,100)
 	var gem
-	if gem_index == 0:
+	print(gem_percent)
+	if gem_percent < 50:
 		gem = ruby.instantiate()
-	elif gem_index == 1:
+	elif gem_percent < 80:
 		gem = saphire.instantiate()
 	else:
 		gem = topaz.instantiate()
