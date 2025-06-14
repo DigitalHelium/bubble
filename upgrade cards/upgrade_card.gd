@@ -31,3 +31,15 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE, 0.3)
+	
+
+var flag = false
+
+func _process(delta: float) -> void:
+	if $".".is_hovered() and $"Sound button/SoundRate".time_left == 0 and !flag:
+		$"Sound button".play()
+		$"Sound button/SoundRate".start()
+		flag = true
+	if !$".".is_hovered() and flag:
+		$"Sound button/SoundRate".stop()
+		flag = false

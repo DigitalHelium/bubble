@@ -937,8 +937,10 @@ position = Vector2(117, 143)
 [node name="SapphireBubbleGem" parent="." instance=ExtResource("10_bh53p")]
 
 [node name="BackMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("11_pbl0a")
-volume_db = -30.0
+volume_db = -24.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Setting Button" to="." method="_on_setting_button_pressed"]

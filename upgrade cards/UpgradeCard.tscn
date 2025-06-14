@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2tp5lvo37id2"]
+[gd_scene load_steps=7 format=3 uid="uid://b2tp5lvo37id2"]
 
 [ext_resource type="Script" uid="uid://bywrm3688eiio" path="res://upgrade cards/upgrade_card.gd" id="1_idhpl"]
+[ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="2_seiuc"]
 [ext_resource type="Texture2D" uid="uid://mon4y28r6ucb" path="res://texture/card/card.png" id="2_swn56"]
+[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="3_v74sy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v74sy"]
 font_size = 20
@@ -29,6 +31,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_idhpl")
 
+[node name="Sound button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_seiuc")
+volume_db = -15.0
+bus = &"Sound"
+
+[node name="SoundRate" type="Timer" parent="Sound button"]
+wait_time = 0.05
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(124.75, 167.208)
 scale = Vector2(4.24576, 4.24576)
@@ -42,6 +53,7 @@ offset_right = 219.0
 offset_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_v74sy")
 text = "Card"
 label_settings = SubResource("LabelSettings_v74sy")
 horizontal_alignment = 1
@@ -52,6 +64,7 @@ offset_left = 34.0
 offset_top = 163.0
 offset_right = 211.0
 offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("3_v74sy")
 text = "Description"
 label_settings = SubResource("LabelSettings_seiuc")
 text_overrun_behavior = 2

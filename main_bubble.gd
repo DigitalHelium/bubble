@@ -113,6 +113,7 @@ func _on_timer_timeout() -> void:
 			
 			
 func open_upgrade_screen(cards: Array[UpgradeCard.CardClass], func_callable: Callable):
+	get_tree().paused = true
 	upgrade_screen.visible = true
 	upgrade_screen.clear_card()
 	for card in cards:
@@ -125,12 +126,13 @@ func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
 	if card.func_callable != null:
 		card.func_callable.call(self, card.card_args)
 	upgrade_screen.visible = false
+	get_tree().paused = false
 	
 
 func _on_setting_button_pressed() -> void:
 	var scene_setting = preload("res://setting/Control.tscn")
 	var scene =  scene_setting.instantiate()
-	scene.set_scale(Vector2(0.5, 0.5))
+	#scene.set_scale(Vector2(0.5, 0.5))
 	scene.set_position(Vector2(-120,-100))
 	scene.set_z_index(12)
 	add_child(scene)
