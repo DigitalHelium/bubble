@@ -47,16 +47,18 @@ texture = ExtResource("2_swn56")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-offset_left = 30.0
-offset_top = 26.0
-offset_right = 219.0
-offset_bottom = 54.0
+offset_left = 44.0
+offset_top = 27.0
+offset_right = 205.0
+offset_bottom = 117.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_v74sy")
 text = "Card"
 label_settings = SubResource("LabelSettings_v74sy")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 0

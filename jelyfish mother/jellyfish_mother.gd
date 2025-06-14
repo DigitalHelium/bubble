@@ -1,16 +1,14 @@
 extends Node2D
 
 var cards: Array[UpgradeCard.CardClass] = [
-	UpgradeCard.CardClass.new('+Быстрые руки', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8 }),
+	UpgradeCard.CardClass.new('+Быстрые руки', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8, 'reload_time': 0.8  }),
 	UpgradeCard.CardClass.new('-Черепашка', 'Уменьшить ускорение движения персонажа на 20%', change_property, { 'acceleration': 0.8 }),
 	UpgradeCard.CardClass.new('-Друг моря', 'Уменьшить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 0.8 }),
 	UpgradeCard.CardClass.new('-Больше воды', 'Уменьшить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 0.8 }),
-	UpgradeCard.CardClass.new('+Прямо с завода', 'Уменьшить перезарядку на 20%', change_property, { 'reload_time': 0.8 }),
-	UpgradeCard.CardClass.new('-Старое ружье', 'Увеличить задержку на 20%', change_property, { 'duration_shot_fire': 1.2 }),
 	UpgradeCard.CardClass.new('+Кролик', 'Увеличить ускорение движения персонажа на 20%', change_property, { 'acceleration': 1.2 }),
 	UpgradeCard.CardClass.new('+Страшное лицо', 'Увеличить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 1.2 }),
-	UpgradeCard.CardClass.new('+Еще больше воды', 'Увеличить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 1.2 }),
-	UpgradeCard.CardClass.new('-Медленные руки', 'Увеличить перезарядку на 20%', change_property, { 'reload_time': 1.2 }),
+	UpgradeCard.CardClass.new('+Еще больше воды', 'Увеличить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 2 }),
+	UpgradeCard.CardClass.new('-Медленные руки', 'Увеличить перезарядку на 20%', change_property, { 'duration_shot_fire': 1.2,'reload_time': 1.2 }),
 	UpgradeCard.CardClass.new('~Два ствола', 'Взять дробовик', change_gun, {'name':'shotgun'}),
 	UpgradeCard.CardClass.new('~Старый друг', 'Взять пистолет', change_gun, {'name':'pistol'}),
 	UpgradeCard.CardClass.new('~Ливень', 'Взять пулемет', change_gun, {'name':'gatling'}),
@@ -21,7 +19,7 @@ var cards: Array[UpgradeCard.CardClass] = [
 
 @export var next_upgrade_price = 3
 @export var next_coast = 5
-@export var gem_for_win = 300
+@export var gem_for_win = 200
 @export var current_gems = 0
 
 func _ready() -> void:
