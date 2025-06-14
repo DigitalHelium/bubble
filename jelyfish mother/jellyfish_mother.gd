@@ -1,27 +1,23 @@
 extends Node2D
 
 var cards: Array[UpgradeCard.CardClass] = [
-	UpgradeCard.CardClass.new('+Быстрые руки', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8 }),
-	UpgradeCard.CardClass.new('-Черепашка', 'Уменьшить ускорение движения персонажа на 20%', change_property, { 'acceleration': 0.8 }),
-	UpgradeCard.CardClass.new('-Друг моря', 'Уменьшить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 0.8 }),
-	UpgradeCard.CardClass.new('-Больше воды', 'Уменьшить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 0.8 }),
-	UpgradeCard.CardClass.new('+Прямо с завода', 'Уменьшить перезарядку на 20%', change_property, { 'reload_time': 0.8 }),
-	UpgradeCard.CardClass.new('-Старое ружье', 'Увеличить задержку на 20%', change_property, { 'duration_shot_fire': 1.2 }),
-	UpgradeCard.CardClass.new('+Кролик', 'Увеличить ускорение движения персонажа на 20%', change_property, { 'acceleration': 1.2 }),
-	UpgradeCard.CardClass.new('+Страшное лицо', 'Увеличить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 1.2 }),
-	UpgradeCard.CardClass.new('+Еще больше воды', 'Увеличить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 1.2 }),
-	UpgradeCard.CardClass.new('-Медленные руки', 'Увеличить перезарядку на 20%', change_property, { 'reload_time': 1.2 }),
-	UpgradeCard.CardClass.new('~Два ствола', 'Взять дробовик', change_gun, {'name':'shotgun'}),
-	UpgradeCard.CardClass.new('~Старый друг', 'Взять пистолет', change_gun, {'name':'pistol'}),
-	UpgradeCard.CardClass.new('~Ливень', 'Взять пулемет', change_gun, {'name':'gatling'}),
-	UpgradeCard.CardClass.new('~Колесо Удачи', 'Управление оружием на колесико мыши', change_controls, {'type':'wheel'}),
-	UpgradeCard.CardClass.new('~Скромная мышь', 'Управление оружием курсором мыши', change_controls, {'type':'mouse'}),
-	UpgradeCard.CardClass.new('+Вылечиться', 'Увеличить размер пузыря', heal_player, {})
+	UpgradeCard.CardClass.new('Чаще!!!', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8 }),
+	UpgradeCard.CardClass.new('Медленее!!', 'Уменьшить ускорение движения персонажа на 20%', change_property, { 'acceleration': 0.8 }),
+	UpgradeCard.CardClass.new('Друзья!', 'Уменьшить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 0.8 }),
+	UpgradeCard.CardClass.new('(Не влияет)', 'Уменьшить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 0.8 }),
+	UpgradeCard.CardClass.new('RELOAD', 'Уменьшить перезарядку на 20%', change_property, { 'reload_time': 0.8 }),
+	UpgradeCard.CardClass.new('Реже!!!', 'Увеличить задержку на 20%', change_property, { 'duration_shot_fire': 1.2 }),
+	UpgradeCard.CardClass.new('Быстрее!!', 'Увеличить ускорение движения персонажа на 20%', change_property, { 'acceleration': 1.2 }),
+	UpgradeCard.CardClass.new('Пугающе!', 'Увеличить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 1.2 }),
+	UpgradeCard.CardClass.new('(Не влияет х2)', 'Увеличить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 1.2 }),
+	UpgradeCard.CardClass.new('пупупуу', 'Увеличить перезарядку на 20%', change_property, { 'reload_time': 1.2 }),
+	UpgradeCard.CardClass.new('Дробаш!!', 'Взять дробовик', change_gun, {'name':'shotgun'}),
+	UpgradeCard.CardClass.new('Страдания', 'Взять пистолет', change_gun, {'name':'pistol'})
 ]
 
 @export var next_upgrade_price = 3
 @export var next_coast = 5
-@export var gem_for_win = 300
+@export var gem_for_win = 126
 @export var current_gems = 0
 
 func _ready() -> void:
@@ -34,9 +30,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method('open_upgrade_screen') && next_upgrade_price <= body.gem_count:
 		if (current_gems + body.gem_count) >= gem_for_win:
 			SceneTransition.change_scene("res://menu/WinPlayer.tscn")
+			DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))
 			return
-		cards.shuffle()
-		var arr: Array[UpgradeCard.CardClass] = [cards.get(0), cards.get(1), cards.get(2)]
+		var arr: Array[UpgradeCard.CardClass] = [cards.pick_random(), cards.pick_random(), cards.pick_random()]
 		body.open_upgrade_screen(arr, buy)
 	elif body is BubbleCharacter:
 		$NotStandard.text = "Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
@@ -49,15 +45,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func change_gun(player: BubbleCharacter, properties: Dictionary):
 	if properties.name != null:
 		player.change_weapon(properties.name)
-
-func change_controls(player: BubbleCharacter, properties: Dictionary):
-	if properties.type == 'mouse':
-		player.change_control_type_to_mouse()
-	elif properties.type == 'wheel':
-		player.change_control_type_to_wheel()
-
-func heal_player(player: BubbleCharacter, properties: Dictionary):
-	player.increase_bubble_size()
 
 func change_property(player: BubbleCharacter, properties: Dictionary):
 	for property in properties:

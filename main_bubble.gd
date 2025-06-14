@@ -30,6 +30,7 @@ signal enemy_push_after_damage_signal
 signal change_bubble_after_damage_signal
 
 func _ready() -> void:
+	DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
 	change_weapon("gatling")
 	$Music.play()
 	
@@ -122,6 +123,7 @@ func receive_damage() -> void:
 
 func kill_player() -> void:
 	SceneTransition.change_scene("res://menu/Kill Player.tscn")
+	DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))
 	#queue_free()
 	pass
 
@@ -200,3 +202,4 @@ func _on_count_timer_timeout() -> void:
 
 func _on_close_pressed() -> void:
 	SceneTransition.change_scene("res://menu/menu.tscn")
+	DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))

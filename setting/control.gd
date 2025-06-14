@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))
 	%AnimationSettings.play("animation_setting")
 	$MarginContainer/VBoxContainer/Volume_Master.set_value_no_signal(AudioServer.get_bus_volume_db(0))
 	$MarginContainer/VBoxContainer/Volume_Sound.set_value_no_signal(AudioServer.get_bus_volume_db(1))
@@ -57,6 +58,8 @@ func _on_sound_mute_toggled(toggled_on: bool) -> void:
 
 
 func _on_menu_button_pressed() -> void:
+	if $"../" is Node2D:
+		DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
 	%AnimationSettings.play("animation_end")
 	await  %AnimationSettings.animation_finished
 	get_tree().paused = false

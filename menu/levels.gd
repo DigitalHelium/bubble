@@ -9,6 +9,7 @@ func _on_menu_button_pressed() -> void:
 func _on__pressed_1() -> void:
 	$Music.volume_db = -100
 	SceneTransition.change_scene("res://prod scenes/prod_scene.tscn")
+	DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
 	print('1')
 
 
