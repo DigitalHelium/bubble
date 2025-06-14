@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cukldcoup716w"]
+[gd_scene load_steps=8 format=3 uid="uid://cukldcoup716w"]
 
 [ext_resource type="Texture2D" uid="uid://d0bn4obfwy1h7" path="res://texture/jellyfish/jellyfish_mother_body.png" id="1_5sfhh"]
 [ext_resource type="Script" uid="uid://15cjig4845vr" path="res://jelyfish mother/jellyfish_mother.gd" id="1_vpeiu"]
 [ext_resource type="Texture2D" uid="uid://6krje2yb13gv" path="res://texture/jellyfish/jellyfish_mother_eye.png" id="2_eg6cn"]
 [ext_resource type="Script" uid="uid://dg3vtnx33igkl" path="res://jelyfish mother/jellyfish_mother_eye.gd" id="3_eg6cn"]
+[ext_resource type="Texture2D" uid="uid://buc662vug1q1y" path="res://texture/background_menu/Слой 0.png" id="5_mh4me"]
+[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="6_s0rps"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eg6cn"]
 radius = 43.1045
@@ -33,12 +35,21 @@ offset_bottom = 66.0
 text = "30"
 horizontal_alignment = 1
 
+[node name="Cloud" type="Sprite2D" parent="."]
+position = Vector2(72, -53.5)
+scale = Vector2(0.55516, 0.710145)
+texture = ExtResource("5_mh4me")
+
 [node name="NotStandard" type="Label" parent="."]
-offset_left = -82.0
-offset_top = -95.0
-offset_right = 99.0
-offset_bottom = -46.0
-text = "       Не по ГОСТу!
+offset_left = -31.0
+offset_top = -74.0
+offset_right = 178.0
+offset_bottom = -25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_s0rps")
+theme_override_font_sizes/font_size = 9
+text = "Не по ГОСТу!
 Нужно самоцветов: %s"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
