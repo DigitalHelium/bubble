@@ -17,14 +17,22 @@ var cards: Array[UpgradeCard.CardClass] = [
 
 @export var next_upgrade_price = 3
 @export var next_coast = 5
+var not_standard_text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price)]
 
 func _ready() -> void:
 	$Price.text = str(next_upgrade_price)
+	$NotStandard.text = not_standard_text
+	$NotStandard.visible = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method('open_upgrade_screen') && next_upgrade_price <= body.gem_count:
 		var arr: Array[UpgradeCard.CardClass] = [cards.pick_random(), cards.pick_random(), cards.pick_random()]
 		body.open_upgrade_screen(arr, buy)
+	elif body is BubbleCharacter:
+		$NotStandard.text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
+		$NotStandard.visible = true
+		await get_tree().create_timer(3).timeout
+		$NotStandard.visible = false
 		
 func change_gun(player: BubbleCharacter, properties: Dictionary):
 	if properties.name != null:
