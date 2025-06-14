@@ -14,5 +14,5 @@ func _process(delta):
 		var velocity : Vector2
 		velocity.x = max(min(parent.velocity.x, max_velocity),min_velocity)
 		velocity.y = max(min(parent.velocity.y, max_velocity),min_velocity)
-		offset = offset.lerp(velocity, delta * smoothstep(min_velocity, max_velocity, velocity.length()))
+		position = position.lerp(velocity, delta * smoothstep(min_velocity, max_velocity, velocity.length()))
 	
