@@ -19,7 +19,7 @@ var cards: Array[UpgradeCard.CardClass] = [
 
 @export var next_upgrade_price = 3
 @export var next_coast = 5
-@export var gem_for_win = 200
+@export var gem_for_win = 3
 @export var current_gems = 0
 
 func _ready() -> void:

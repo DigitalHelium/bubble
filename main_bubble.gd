@@ -9,6 +9,9 @@ class_name BubbleCharacter extends CharacterBody2D
 @onready var wallet := $Wallet
 var current_gun : BaseGun = null
 
+var music1 = preload("res://sound/670039__seth_makes_sounds__chill-background-music.wav") 
+var music2 = preload("res://sound/640097__timouse__melodic-beat-220619.wav")
+
 var gun_scenes = {
 	"pistol": preload("res://guns/pistol/pistol.tscn"),
 	"shotgun": preload("res://guns/shotgun/shotgun.tscn"),
@@ -34,6 +37,12 @@ signal change_bubble_after_damage_signal
 func _ready() -> void:
 	DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
 	change_weapon("gatling")
+	if randi_range(0,1)==1:
+		print("1")
+		$Music.stream = music1
+	else:
+		print("0")
+		$Music.stream = music2
 	$Music.play()
 	
 func change_weapon(weapon_name: String):

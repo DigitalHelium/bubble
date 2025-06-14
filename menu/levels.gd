@@ -5,6 +5,8 @@ var number = 1
 var one = load("res://texture/background_menu/cat-scene1.png")
 var two =  load("res://texture/background_menu/cat-scene2.png")
 
+func _ready():
+	$AnimationPlayer.play("start")
 func _process(delta: float) -> void:
 	if $next.is_hovered() and $"Sound button/SoundRate".time_left == 0 and !flag:
 		$"Sound button".play()
@@ -29,6 +31,7 @@ func _on_next_pressed() -> void:
 	else:
 		SceneTransition.change_scene("res://prod scenes/prod_scene.tscn")
 		DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
+		$Music.stop()
 		$AnimationPlayer.play("end")
 		return
 	
