@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4li5lrb34x2v"]
+[gd_scene load_steps=5 format=3 uid="uid://dko6yxvmm7bsh"]
 
-[ext_resource type="Script" uid="uid://smrvfteyhh34" path="res://menu/color_rect.gd" id="1_uanh7"]
-[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="1_xw02a"]
-[ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="3_dc7y4"]
-[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="4_dc7y4"]
+[ext_resource type="Script" uid="uid://smrvfteyhh34" path="res://menu/color_rect.gd" id="1_eve6l"]
+[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="2_fqieo"]
+[ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="3_kyeil"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="4_i0hq0"]
 
-[node name="KillPlayer" type="Control"]
+[node name="WinPlayer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0431373, 0.521569, 0.737255, 0.992157)
-script = ExtResource("1_uanh7")
+script = ExtResource("1_eve6l")
 
 [node name="Play hover3" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -32,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.446
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -349.0
-offset_top = -96.008
-offset_right = 352.0
-offset_bottom = 61.0
+offset_left = -556.0
+offset_top = -214.008
+offset_right = 578.0
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -44,15 +44,19 @@ theme_override_colors/font_shadow_color = Color(0.898039, 0.913725, 0.992157, 0.
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 7
-theme_override_fonts/font = ExtResource("1_xw02a")
+theme_override_fonts/font = ExtResource("2_fqieo")
 theme_override_font_sizes/font_size = 50
-text = "ОН НЕ УМЕР В КОНЦЕ...
-ВЫПЛЫЛ, ЧЕСТНО
-#БЕЗ_НАСИЛИЯ"
+text = "Поздравляем!
+
+Вы помогли королеве медуз обрести 
+былое могущество!
+
+Спасибо за игру!"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Sound button" type="AudioStreamPlayer" parent="ColorRect"]
-stream = ExtResource("3_dc7y4")
+stream = ExtResource("3_kyeil")
 volume_db = -15.0
 bus = &"Sound"
 
@@ -70,7 +74,7 @@ focus_mode = 0
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_dc7y4")
+theme_override_fonts/font = ExtResource("4_i0hq0")
 theme_override_font_sizes/font_size = 50
 text = "x"
 
@@ -91,7 +95,7 @@ focus_mode = 0
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_dc7y4")
+theme_override_fonts/font = ExtResource("4_i0hq0")
 theme_override_font_sizes/font_size = 50
 text = "ЗАНОВО"
 

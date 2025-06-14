@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _on_start_button_pressed() -> void:
 	
-	SceneTransition.change_scene("res://test scenes/game_scene_test_with_tilemap.tscn")
+	SceneTransition.change_scene("res://prod scenes/prod_scene.tscn")
 
 
 func _on_close_pressed() -> void:
