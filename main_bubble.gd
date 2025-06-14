@@ -80,7 +80,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		wallet.add_child(gem)
 		
 
-
+func handle_buy(price: int) -> void:
+	wallet.get_children().sort_custom(custom_array_sort)
+	for child in wallet.get_children():
+		print(child)
+	pass
+	
+func custom_array_sort(a : int, b: int) -> bool:
+	if typeof(a) == typeof(b):
+		return a < b;
+	return false
+	
 func receive_damage() -> void:
 	current_health -=1
 	decrease_bubble_size()
