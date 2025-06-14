@@ -25,7 +25,7 @@ expand_mode = 1
 [node name="Background Water (Node2D)" parent="Background" instance=ExtResource("2_u4eie")]
 z_index = -1
 position = Vector2(576.5, 325.5)
-scale = Vector2(4.61328, 2.41406)
+scale = Vector2(0.0078125, 0.0078125)
 
 [node name="4" type="Label" parent="Background"]
 layout_mode = 0

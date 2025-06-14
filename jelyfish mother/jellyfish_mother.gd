@@ -24,7 +24,7 @@ var cards: Array[UpgradeCard.CardClass] = [
 
 func _ready() -> void:
 	$Price.text = str(next_upgrade_price)
-	$NotStandard.text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price)]
+	$NotStandard.text = "Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price)]
 	$NotStandard.visible = false
 	$Cloud.visible = false
 
@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var arr: Array[UpgradeCard.CardClass] = [cards.get(0), cards.get(1), cards.get(2)]
 		body.open_upgrade_screen(arr, buy)
 	elif body is BubbleCharacter:
-		$NotStandard.text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
+		$NotStandard.text = "Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
 		$NotStandard.visible = true
 		$Cloud.visible = true
 		await get_tree().create_timer(3).timeout
