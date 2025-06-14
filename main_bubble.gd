@@ -142,7 +142,7 @@ func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
 func _on_setting_button_pressed() -> void:
 	var scene_setting = preload("res://setting/Control.tscn")
 	var scene =  scene_setting.instantiate()
-	#scene.set_scale(Vector2(0.5, 0.5))
+	scene.set_scale(Vector2(0.5, 0.5))
 	scene.set_position(Vector2(-120,-100))
 	scene.set_z_index(12)
 	add_child(scene)
@@ -154,3 +154,7 @@ func _on_setting_button_pressed() -> void:
 
 func _on_count_timer_timeout() -> void:
 	$Count.visible = false
+
+
+func _on_close_pressed() -> void:
+	SceneTransition.change_scene("res://menu/menu.tscn")

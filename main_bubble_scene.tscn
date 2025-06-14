@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=18 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
 [ext_resource type="Script" uid="uid://c4mod36qu00vy" path="res://main_bubble_camera_script.gd" id="2_pa4mq"]
+[ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="3_0arfq"]
 [ext_resource type="Script" uid="uid://rglsi46gyp70" path="res://sprite_character.gd" id="3_byoix"]
 [ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="3_tc057"]
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
@@ -121,14 +122,29 @@ shape = SubResource("CircleShape2D_byoix")
 zoom = Vector2(1.5, 1.5)
 script = ExtResource("2_pa4mq")
 
+[node name="Close" type="Button" parent="Camera2D"]
+offset_left = 340.0
+offset_top = -248.0
+offset_right = 405.0
+offset_bottom = -160.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.392157)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0arfq")
+theme_override_font_sizes/font_size = 21
+text = "x"
+
 [node name="Setting Button" type="Button" parent="Camera2D"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 354.0
-offset_top = -216.0
-offset_right = 394.0
-offset_bottom = -176.0
+offset_left = 329.0
+offset_top = -217.0
+offset_right = 369.0
+offset_bottom = -177.0
 grow_horizontal = 0
 scale = Vector2(0.75, 0.75)
 focus_mode = 0
@@ -221,6 +237,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_tjaii")
 }
 
+[connection signal="pressed" from="Camera2D/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Camera2D/Setting Button" to="." method="_on_setting_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

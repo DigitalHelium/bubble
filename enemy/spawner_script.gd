@@ -24,7 +24,6 @@ func _on_timer_timeout() -> void:
 	enemy_count = enemy_count + 1
 	enemy.enemy_died.connect(enemy_died_handler)
 	add_child(enemy)
-	print(enemy_count)
 
 func calculate_spawn_position() -> Vector2:
 	var size = get_viewport().get_visible_rect().size
@@ -65,4 +64,3 @@ func enemy_died_handler(enemy : Enemy) -> void:
 
 func _on_timer_max_enemy_timeout() -> void:
 	enemy_count_max = enemy_count_max + 1
-	print(enemy_count_max)
