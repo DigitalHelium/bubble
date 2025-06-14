@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4apdsecoq0bt" path="res://upgrade menu/upgrade_screen.gd" id="1_2th0c"]
 [ext_resource type="PackedScene" uid="uid://b2tp5lvo37id2" path="res://upgrade cards/UpgradeCard.tscn" id="1_gm8pt"]
-[ext_resource type="Script" uid="uid://c7b8edt1l1qew" path="res://upgrade menu/h_box_container.gd" id="2_7s1jt"]
+[ext_resource type="Script" path="res://upgrade menu/h_box_container.gd" id="2_7s1jt"]
 [ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="4_7s1jt"]
 
 [node name="UpgradeScreen" type="CanvasLayer"]
