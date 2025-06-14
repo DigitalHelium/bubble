@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=20 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnib1exrof02v" path="res://upgrade menu/UpgradeScreen.tscn" id="8_1pwmh"]
 [ext_resource type="PackedScene" uid="uid://byhdaldj8daj8" path="res://setting/Control.tscn" id="10_3yu2f"]
 [ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="10_f6r1e"]
+[ext_resource type="AudioStream" uid="uid://cdllnuf627afr" path="res://sound/670039__seth_makes_sounds__chill-background-music.wav" id="14_t6xdp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
@@ -238,6 +239,12 @@ root_node = NodePath("../Sprite (Sprite2D)")
 libraries = {
 &"": SubResource("AnimationLibrary_tjaii")
 }
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_t6xdp")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Camera2D/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Camera2D/Setting Button" to="." method="_on_setting_button_pressed"]
