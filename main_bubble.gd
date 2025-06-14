@@ -30,7 +30,7 @@ signal enemy_push_after_damage_signal
 signal change_bubble_after_damage_signal
 
 func _ready() -> void:
-	change_weapon("pistol")
+	change_weapon("gatling")
 	
 func change_weapon(weapon_name: String):
 	if weapon_name in gun_scenes:
@@ -100,6 +100,7 @@ func decrease_bubble_size() -> void:
 	$Area2D/CollisionShape2D.scale /= scale_decrease
 	$AnimatableBody2D/CollisionPolygon2D.scale /= scale_decrease
 	$Sprite2D.scale /= scale_decrease
+	$"Sprite (Sprite2D)".scale /= scale_decrease
 	pass
 
 func _on_timer_timeout() -> void:

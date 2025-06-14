@@ -2,7 +2,7 @@ class_name Pistol extends BaseGun
 
 func _ready():
 	super._ready()
-	particle_damage = 15
+	particle_damage = 60
 	acceleration = 90
 	shot_rejection = 1.3
 	rejection_duration = 0.7

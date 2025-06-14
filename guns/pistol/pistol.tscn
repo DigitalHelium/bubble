@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://vbtyxkku6l5r"]
+[gd_scene load_steps=4 format=3 uid="uid://vbtyxkku6l5r"]
 
 [ext_resource type="PackedScene" uid="uid://ddenutd72sxh0" path="res://guns/base/base_gun.tscn" id="1_x8b8f"]
 [ext_resource type="Script" uid="uid://ibykl0wbye1c" path="res://guns/pistol/pistol.gd" id="2_4vo22"]
+[ext_resource type="AudioStream" uid="uid://bls1gdxqco5cv" path="res://sound/пузырек пистолет.wav" id="3_wujpm"]
 
 [node name="Pistol" instance=ExtResource("1_x8b8f")]
 script = ExtResource("2_4vo22")
 
 [node name="GunSprite" parent="." index="0"]
 position = Vector2(-7, 0)
+
+[node name="AudioStreamPlayer" parent="GunSprite/GPUParticles2D" index="0"]
+stream = ExtResource("3_wujpm")
+
+[node name="SoundRate" parent="GunSprite/GPUParticles2D/AudioStreamPlayer" index="0"]
+wait_time = 0.001

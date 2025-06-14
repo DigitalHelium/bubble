@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://65upxlb3xwwj"
+path="res://.godot/imported/еще один пузырек для оружия.wav-e4628ba7188fbf789d256589fa67de82.sample"
+
+[deps]
+
+source_file="res://sound/еще один пузырек для оружия.wav"
+dest_files=["res://.godot/imported/еще один пузырек для оружия.wav-e4628ba7188fbf789d256589fa67de82.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

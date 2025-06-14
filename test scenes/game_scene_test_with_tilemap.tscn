@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cyeyy16cdeicr" path="res://texture/tilemaps/tilemap.png" id="3_03xkv"]
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="3_noxx7"]
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="4_i1s7y"]
-[ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn" id="7_tmsp2"]
-[ext_resource type="PackedScene" uid="uid://cje61erorswap" path="res://gems/gems/ruby gem/RubyGem.tscn" id="8_wm3jm"]
+[ext_resource type="PackedScene" uid="uid://bbehlv27oic11" path="res://gems/bubble gems/sapphire bubble gem/SapphireBubbleGem.tscn" id="10_bh53p"]
 [ext_resource type="PackedScene" uid="uid://cukldcoup716w" path="res://jelyfish mother/JellyfishMother.tscn" id="11_1fjbe"]
+[ext_resource type="AudioStream" uid="uid://cdllnuf627afr" path="res://sound/670039__seth_makes_sounds__chill-background-music.wav" id="11_pbl0a"]
 [ext_resource type="PackedScene" uid="uid://bdym3qmbmhx1a" path="res://enemy/Spawner.tscn" id="11_uo1rf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4i1r"]
@@ -929,47 +929,16 @@ position = Vector2(149, 37)
 [node name="Enemy (CharacterBody2D)3" parent="." instance=ExtResource("4_i1s7y")]
 position = Vector2(526, 262)
 
-[node name="Gem" parent="." instance=ExtResource("7_tmsp2")]
-position = Vector2(144, 233)
-input_pickable = true
-
-[node name="Gem2" parent="." instance=ExtResource("7_tmsp2")]
-position = Vector2(226, 240)
-input_pickable = true
-
-[node name="Gem3" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
-[node name="Gem4" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
-[node name="Gem5" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
-[node name="Gem6" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
-[node name="Gem7" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
-[node name="Gem8" parent="." instance=ExtResource("8_wm3jm")]
-position = Vector2(260, 143)
-mass = 0.1
-gravity_scale = 0.5
-
 [node name="JellyfishMother" parent="." instance=ExtResource("11_1fjbe")]
 position = Vector2(117, 143)
 
 [node name="Spawner" parent="." instance=ExtResource("11_uo1rf")]
+
+[node name="SapphireBubbleGem" parent="." instance=ExtResource("10_bh53p")]
+
+[node name="BackMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pbl0a")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="pressed" from="Setting Button" to="." method="_on_setting_button_pressed"]
