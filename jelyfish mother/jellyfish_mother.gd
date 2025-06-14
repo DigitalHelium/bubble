@@ -21,20 +21,24 @@ var cards: Array[UpgradeCard.CardClass] = [
 
 @export var next_upgrade_price = 3
 @export var next_coast = 5
-var not_standard_text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price)]
+@export var gem_for_win = 65
+@export var current_gems = 0
 
 func _ready() -> void:
 	$Price.text = str(next_upgrade_price)
-	$NotStandard.text = not_standard_text
+	$NotStandard.text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price)]
 	$NotStandard.visible = false
 	$Cloud.visible = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method('open_upgrade_screen') && next_upgrade_price <= body.gem_count:
+		if (current_gems + body.gem_count) >= gem_for_win:
+			SceneTransition.change_scene("res://menu/WinPlayer.tscn")
+			return
 		var arr: Array[UpgradeCard.CardClass] = [cards.pick_random(), cards.pick_random(), cards.pick_random()]
 		body.open_upgrade_screen(arr, buy)
 	elif body is BubbleCharacter:
-		$NotStandard.text = "Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
+		$NotStandard.text = "       Не по ГОСТу!\nНужно ещё самоцветов: %s" % [str(next_upgrade_price - body.gem_count)]
 		$NotStandard.visible = true
 		$Cloud.visible = true
 		await get_tree().create_timer(3).timeout
@@ -71,5 +75,6 @@ func buy(player: BubbleCharacter):
 		#i += 1
 	player.handle_buy(next_upgrade_price)
 	next_upgrade_price += next_coast
+	current_gems += next_upgrade_price
 	$Price.text = str(next_upgrade_price)
 	print(player.gem_count)

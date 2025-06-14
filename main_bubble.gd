@@ -89,12 +89,21 @@ func handle_buy(price: int) -> void:
 				gem_count -= child.cost
 				price -= child.cost
 			else:
-				price = 0
-				for j in range(child.cost - price):
+				gem_count -= price
+				var change = child.cost - price
+				var saphire_count = change / 5
+				for j in range(saphire_count):
+					print(j)
+					var gem: Gem = load("res://gems/gems/sapphire gem/SapphireGem.tscn").instantiate()
+					gem_count += gem.cost
+					wallet.add_child(gem)
+				var ruby_count = change % 5
+				for j in range(ruby_count):
 					print(j)
 					var gem: Gem = load("res://gems/gems/ruby gem/RubyGem.tscn").instantiate()
 					gem_count += gem.cost
 					wallet.add_child(gem)
+				price = 0
 			child.queue_free()
 	pass
 	
