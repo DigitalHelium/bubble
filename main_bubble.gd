@@ -79,8 +79,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$CountTimer.start()
 		wallet.add_child(gem)
 		
-func _on_count_timer_timeout() -> void:
-	$Count.visible = false
+
 
 func receive_damage() -> void:
 	current_health -=1
@@ -138,3 +137,7 @@ func _on_setting_button_pressed() -> void:
 	
 	#$Settings.visible = true
 	#get_tree().paused = true
+
+
+func _on_count_timer_timeout() -> void:
+	$Count.visible = false

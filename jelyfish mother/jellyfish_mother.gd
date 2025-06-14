@@ -1,9 +1,18 @@
 extends Node2D
 
 var cards: Array[UpgradeCard.CardClass] = [
-	UpgradeCard.CardClass.new('card 1', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8 }),
-	UpgradeCard.CardClass.new('shotgun!!', 'Взять shotgun', change_gun, {'name':'shotgun'}),
-	UpgradeCard.CardClass.new('pistol', 'Взять pistol', change_gun, {'name':'pistol'})
+	UpgradeCard.CardClass.new('Чаще!!!', 'Уменьшить задержку на 20%', change_property, { 'duration_shot_fire': 0.8 }),
+	UpgradeCard.CardClass.new('Медленее!!', 'Уменьшить ускорение движения персонажа на 20%', change_property, { 'acceleration': 0.8 }),
+	UpgradeCard.CardClass.new('Друзья!', 'Уменьшить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 0.8 }),
+	UpgradeCard.CardClass.new('(Не влияет)', 'Уменьшить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 0.8 }),
+	UpgradeCard.CardClass.new('RELOAD', 'Уменьшить перезарядку на 20%', change_property, { 'reload_time': 0.8 }),
+	UpgradeCard.CardClass.new('Реже!!!', 'Увеличить задержку на 20%', change_property, { 'duration_shot_fire': 1.2 }),
+	UpgradeCard.CardClass.new('Быстрее!!', 'Увеличить ускорение движения персонажа на 20%', change_property, { 'acceleration': 1.2 }),
+	UpgradeCard.CardClass.new('Пугающе!', 'Увеличить "испуг" от пузырьков на 20%', change_property, { 'particle_damage': 1.2 }),
+	UpgradeCard.CardClass.new('(Не влияет х2)', 'Увеличить число выпускаемых пузырьков на 20%', change_property, { 'spread_amount': 1.2 }),
+	UpgradeCard.CardClass.new('пупупуу', 'Увеличить перезарядку на 20%', change_property, { 'reload_time': 1.2 }),
+	UpgradeCard.CardClass.new('Дробаш!!', 'Взять дробовик', change_gun, {'name':'shotgun'}),
+	UpgradeCard.CardClass.new('Страдания', 'Взять пистолет', change_gun, {'name':'pistol'})
 ]
 
 @export var next_upgrade_price = 3
@@ -14,7 +23,8 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method('open_upgrade_screen') && next_upgrade_price <= body.gem_count:
-		body.open_upgrade_screen(cards, buy)
+		var arr: Array[UpgradeCard.CardClass] = [cards.pick_random(), cards.pick_random(), cards.pick_random()]
+		body.open_upgrade_screen(arr, buy)
 		
 func change_gun(player: BubbleCharacter, properties: Dictionary):
 	if properties.name != null:
