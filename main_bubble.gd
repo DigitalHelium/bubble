@@ -140,6 +140,7 @@ func decrease_bubble_size() -> void:
 
 #Увеличить размер
 func increase_bubble_size() -> void:
+	current_health += 1
 	var scale_decrease = 1.5
 	$"Collision (CollisionShape2D)2".scale *= scale_decrease
 	$Area2D/CollisionShape2D.scale *= scale_decrease
