@@ -132,8 +132,8 @@ func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
 func _on_setting_button_pressed() -> void:
 	var scene_setting = preload("res://setting/Control.tscn")
 	var scene =  scene_setting.instantiate()
-	scene.set_scale(Vector2(0.5, 0.5))
-	scene.set_position(Vector2(-120,-100))
+	scene.set_scale(Vector2(0.75, 0.75))
+	scene.set_position(Vector2(-190,-135))
 	scene.set_z_index(12)
 	add_child(scene)
 	get_tree().paused = true

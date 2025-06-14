@@ -1,4 +1,4 @@
-﻿extends Node2D
+extends Node2D
 
 
 func _on_menu_button_pressed() -> void:
@@ -8,7 +8,7 @@ func _on_menu_button_pressed() -> void:
 
 func _on__pressed_1() -> void:
 	$Music.volume_db = -100
-	SceneTransition.change_scene("res://test scenes/game_scene_test_with_tilemap.tscn")
+	SceneTransition.change_scene("res://prod scenes/prod_scene.tscn")
 	print('1')
 
 
