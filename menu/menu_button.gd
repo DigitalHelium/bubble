@@ -10,11 +10,6 @@ func _process(delta: float) -> void:
 	if !$StartButton.is_hovered() and flag:
 		$"Sound button/SoundRate".stop()
 		flag = false
-		
-	
-
-	
-
 
 func _on_start_button_pressed() -> void:
 	

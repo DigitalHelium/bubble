@@ -30,7 +30,7 @@ signal enemy_push_after_damage_signal
 signal change_bubble_after_damage_signal
 
 func _ready() -> void:
-	change_weapon("shotgun")
+	change_weapon("pistol")
 	
 func change_weapon(weapon_name: String):
 	if weapon_name in gun_scenes:

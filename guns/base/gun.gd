@@ -24,7 +24,7 @@ var direction : Vector2
 var particles_area: Area2D
 var is_firing: bool = false
 
-var is_mouse_wheel: bool = true
+var is_mouse_wheel: bool = false
 
 func _ready():
 	setup_damage_detection()
