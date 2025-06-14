@@ -32,6 +32,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method('open_upgrade_screen') && next_upgrade_price <= body.gem_count:
 		if (current_gems + body.gem_count) >= gem_for_win:
 			SceneTransition.change_scene("res://menu/WinPlayer.tscn")
+			DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))
 			return
 		cards.shuffle()
 		var arr: Array[UpgradeCard.CardClass] = [cards.get(0), cards.get(1), cards.get(2)]
