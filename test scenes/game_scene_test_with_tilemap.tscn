@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="3_noxx7"]
 [ext_resource type="PackedScene" uid="uid://cofwwc6egthnj" path="res://enemy_scene.tscn" id="4_i1s7y"]
 [ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn" id="7_tmsp2"]
-[ext_resource type="PackedScene" uid="uid://bbehlv27oic11" path="res://gems/bubble gems/sapphire bubble gem/SapphireBubbleGem.tscn" id="8_6fw1k"]
 [ext_resource type="PackedScene" uid="uid://cje61erorswap" path="res://gems/gems/ruby gem/RubyGem.tscn" id="8_wm3jm"]
-[ext_resource type="PackedScene" uid="uid://dwxlp6aes5akp" path="res://gems/bubble gems/topaz bubble gem/TopazBubbleGem.tscn" id="9_bh53p"]
 [ext_resource type="PackedScene" uid="uid://cukldcoup716w" path="res://jelyfish mother/JellyfishMother.tscn" id="11_1fjbe"]
 [ext_resource type="PackedScene" uid="uid://bdym3qmbmhx1a" path="res://enemy/Spawner.tscn" id="11_uo1rf"]
 
@@ -890,7 +888,7 @@ sources/0 = SubResource("TileSetAtlasSource_onl7p")
 sources/1 = SubResource("TileSetAtlasSource_dpgay")
 sources/3 = SubResource("TileSetAtlasSource_tmsp2")
 
-[node name="Scene Root (Node2D)2" type="Node2D"]
+[node name="Scene Root (Node2D)3" type="Node2D"]
 
 [node name="Setting Button" type="Button" parent="."]
 visible = false

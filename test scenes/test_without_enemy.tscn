@@ -1,14 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://cd6ndqx4hrevy"]
+[gd_scene load_steps=20 format=4 uid="uid://cd6ndqx4hrevy"]
 
 [ext_resource type="Texture2D" uid="uid://cgbqfeb6vppvq" path="res://texture/test-tilemap-32x32.png" id="1_gnw1x"]
 [ext_resource type="Texture2D" uid="uid://ckgukfncjc6rp" path="res://texture/tilemap.png" id="2_7wwl1"]
 [ext_resource type="Texture2D" uid="uid://cyeyy16cdeicr" path="res://texture/tilemaps/tilemap.png" id="3_4kyj3"]
 [ext_resource type="PackedScene" uid="uid://ct0wuhmli5bd6" path="res://main_bubble_scene.tscn" id="4_8bqod"]
-[ext_resource type="PackedScene" uid="uid://bbudp5r0w33xl" path="res://background_water_scene.tscn" id="5_cy2ll"]
+[ext_resource type="PackedScene" uid="uid://crru5edsy2sue" path="res://background_water_scene.tscn" id="5_cy2ll"]
+[ext_resource type="PackedScene" uid="uid://c2gppjva667bc" path="res://gems/bubble gems/ruby bubble gem/RubyBubbleGem.tscn" id="8_s2oqk"]
 [ext_resource type="PackedScene" uid="uid://cukldcoup716w" path="res://jelyfish mother/JellyfishMother.tscn" id="9_c3kfs"]
 [ext_resource type="PackedScene" uid="uid://berf8wm6pfcr7" path="res://jellyfish/jellyfish.tscn" id="9_ys5we"]
-[ext_resource type="PackedScene" uid="uid://bbehlv27oic11" path="res://gems/bubble gems/sapphire bubble gem/SapphireBubbleGem.tscn" id="10_4job5"]
-[ext_resource type="PackedScene" uid="uid://dwxlp6aes5akp" path="res://gems/bubble gems/topaz bubble gem/TopazBubbleGem.tscn" id="11_5chxv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x4i1r"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -905,35 +904,8 @@ scale = Vector2(4.94141, 2.26563)
 [node name="JellyfishMother" parent="." instance=ExtResource("9_c3kfs")]
 position = Vector2(117, 143)
 
-[node name="SapphireBubbleGem" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(35, 232)
-
-[node name="TopazBubbleGem" parent="." instance=ExtResource("11_5chxv")]
-position = Vector2(344, 109)
-
-[node name="TopazBubbleGem2" parent="." instance=ExtResource("11_5chxv")]
-position = Vector2(443, 67)
-
-[node name="SapphireBubbleGem2" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(41, 201)
-
-[node name="SapphireBubbleGem3" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(-60, 274)
-
-[node name="SapphireBubbleGem4" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(-69, 216)
-
-[node name="SapphireBubbleGem5" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(-104, 161)
-
-[node name="SapphireBubbleGem6" parent="." instance=ExtResource("10_4job5")]
-position = Vector2(-42, 189)
-
-[node name="TopazBubbleGem3" parent="." instance=ExtResource("11_5chxv")]
-position = Vector2(475, 104)
-
-[node name="TopazBubbleGem4" parent="." instance=ExtResource("11_5chxv")]
-position = Vector2(422, 28)
-
 [node name="Jellyfish" parent="." instance=ExtResource("9_ys5we")]
 position = Vector2(321, 168)
+
+[node name="RubyBubbleGem" parent="." instance=ExtResource("8_s2oqk")]
+position = Vector2(310, 142)

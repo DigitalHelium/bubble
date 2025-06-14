@@ -72,6 +72,7 @@ func handle_fire_event(acceleration_delta : float, gun_direction: Vector2) -> vo
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
 		var gem: Gem = body.collect()
+		print("gem", gem.cost)
 		gem_count += gem.cost
 		$Count.text = '+'+str(gem.cost)
 		$Count.visible = true
