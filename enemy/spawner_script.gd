@@ -8,9 +8,10 @@ var success_create = false
 
 var enemy_scene = preload("res://enemy_scene.tscn")
 @export var enemy_count = 0
+@export var enemy_count_max = 4
 
 func _on_timer_timeout() -> void:
-	if enemy_count > 4 or !is_instance_valid(player):
+	if enemy_count > enemy_count_max or !is_instance_valid(player):
 		return
 	var spawn_position = calculate_spawn_position()
 	if !success_create :
@@ -60,3 +61,8 @@ func check_spawn_place(position : Vector2i) -> bool:
 
 func enemy_died_handler(enemy : Enemy) -> void:
 	enemy_count = enemy_count - 1
+
+
+func _on_timer_max_enemy_timeout() -> void:
+	enemy_count_max = enemy_count_max + 1
+	print(enemy_count_max)
