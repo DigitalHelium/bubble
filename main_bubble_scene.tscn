@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=17 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
+[ext_resource type="Script" uid="uid://c4mod36qu00vy" path="res://main_bubble_camera_script.gd" id="2_pa4mq"]
 [ext_resource type="Script" uid="uid://rglsi46gyp70" path="res://sprite_character.gd" id="3_byoix"]
 [ext_resource type="Texture2D" uid="uid://dvwdi8gp2453v" path="res://texture/body and headl.png" id="3_tc057"]
 [ext_resource type="Texture2D" uid="uid://x5000tex4by4" path="res://texture/hand.png" id="4_7muv3"]
@@ -14,12 +15,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pwmh"]
+radius = 25.0
+
 [sub_resource type="Animation" id="Animation_1pwmh"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Body (Sprite2D):position:y")
+tracks/0/path = NodePath("../Body (Sprite2D):position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%Left leg (Sprite2D):position:y")
+tracks/1/path = NodePath("../Left leg (Sprite2D):position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +45,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Right leg (Sprite2D):position:y")
+tracks/2/path = NodePath("../Right leg (Sprite2D):position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -57,7 +61,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%Body (Sprite2D):position:y")
+tracks/0/path = NodePath("../Body (Sprite2D):position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +72,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%Hand (Sprite2D):position:y")
+tracks/1/path = NodePath("../Hand (Sprite2D):position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +83,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%Left leg (Sprite2D):position:y")
+tracks/2/path = NodePath("../Left leg (Sprite2D):position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -90,7 +94,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%Right leg (Sprite2D):position:y")
+tracks/3/path = NodePath("../Right leg (Sprite2D):position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -105,9 +109,6 @@ _data = {
 &"spring": SubResource("Animation_byoix")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1pwmh"]
-radius = 25.0
-
 [node name="Character (CharacterBody2D)" type="CharacterBody2D"]
 collision_mask = 3
 platform_floor_layers = 4294967167
@@ -116,38 +117,9 @@ script = ExtResource("1_dpgxj")
 [node name="Collision (CollisionShape2D)2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_byoix")
 
-[node name="Sprite (Sprite2D)" type="Sprite2D" parent="."]
-texture = ExtResource("2_byoix")
-script = ExtResource("3_byoix")
-
-[node name="Body (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
-unique_name_in_owner = true
-position = Vector2(0, -1)
-texture = ExtResource("3_tc057")
-
-[node name="Hand (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
-unique_name_in_owner = true
-position = Vector2(-12, 6.6996)
-texture = ExtResource("4_7muv3")
-
-[node name="Left leg (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
-unique_name_in_owner = true
-position = Vector2(-3, 15)
-texture = ExtResource("5_bq5eh")
-
-[node name="Right leg (Sprite2D)" type="Sprite2D" parent="Sprite (Sprite2D)"]
-unique_name_in_owner = true
-position = Vector2(3, 15)
-texture = ExtResource("5_bq5eh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite (Sprite2D)"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_tjaii")
-}
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+script = ExtResource("2_pa4mq")
 
 [node name="Setting Button" type="Button" parent="Camera2D"]
 anchors_preset = 1
@@ -180,6 +152,10 @@ polygon = PackedVector2Array(39, 38, 39, -39, 0, -39, 0, -29, 6, -29, 20, -20, 2
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../AnimatableBody2D")
+
+[node name="Sprite (Sprite2D)" type="Sprite2D" parent="."]
+texture = ExtResource("2_byoix")
+script = ExtResource("3_byoix")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 11
@@ -214,6 +190,33 @@ offset_bottom = -32.0
 horizontal_alignment = 1
 
 [node name="Wallet" type="Node2D" parent="."]
+
+[node name="Body (Sprite2D)" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+texture = ExtResource("3_tc057")
+
+[node name="Hand (Sprite2D)" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-12, 6.6996)
+texture = ExtResource("4_7muv3")
+
+[node name="Left leg (Sprite2D)" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, 15)
+texture = ExtResource("5_bq5eh")
+
+[node name="Right leg (Sprite2D)" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(3, 15)
+texture = ExtResource("5_bq5eh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../Sprite (Sprite2D)")
+libraries = {
+&"": SubResource("AnimationLibrary_tjaii")
+}
 
 [connection signal="pressed" from="Camera2D/Setting Button" to="." method="_on_setting_button_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

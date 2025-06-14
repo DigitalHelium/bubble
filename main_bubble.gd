@@ -101,6 +101,7 @@ func decrease_bubble_size() -> void:
 	$Area2D/CollisionShape2D.scale /= scale_decrease
 	$AnimatableBody2D/CollisionPolygon2D.scale /= scale_decrease
 	$Sprite2D.scale /= scale_decrease
+	$"Sprite (Sprite2D)".scale /= scale_decrease
 	pass
 
 func _on_timer_timeout() -> void:
