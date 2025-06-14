@@ -24,6 +24,8 @@ var current_health : int = max_health #Текущее здоровье
 
 var gem_count : int = 0
 
+var card_pick_delay_timer : SceneTreeTimer
+
 
 signal velocity_update_signal
 signal enemy_push_after_damage_signal
@@ -79,7 +81,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$Count.text = '+'+str(gem.cost)
 		$Count.visible = true
 		$CountTimer.start()
-		wallet.add_child(gem)
+		wallet.call_deferred("add_child", gem)
 		
 
 func handle_buy(price: int) -> void:
@@ -98,13 +100,13 @@ func handle_buy(price: int) -> void:
 					print(j)
 					var gem: Gem = load("res://gems/gems/sapphire gem/SapphireGem.tscn").instantiate()
 					gem_count += gem.cost
-					wallet.add_child(gem)
+					wallet.call_deferred("add_child", gem)
 				var ruby_count = change % 5
 				for j in range(ruby_count):
 					print(j)
 					var gem: Gem = load("res://gems/gems/ruby gem/RubyGem.tscn").instantiate()
 					gem_count += gem.cost
-					wallet.add_child(gem)
+					wallet.call_deferred("add_child", gem)
 				price = 0
 			child.queue_free()
 	pass
@@ -169,6 +171,7 @@ func _on_timer_timeout() -> void:
 			
 func open_upgrade_screen(cards: Array[UpgradeCard.CardClass], func_callable: Callable):
 	get_tree().paused = true
+	card_pick_delay_timer = get_tree().create_timer(0.7)
 	upgrade_screen.visible = true
 	upgrade_screen.clear_card()
 	for card in cards:
@@ -178,6 +181,8 @@ func open_upgrade_screen(cards: Array[UpgradeCard.CardClass], func_callable: Cal
 	func_callable.call(self)
 
 func _on_upgrade_screen_pick_card(card: UpgradeCard.CardClass) -> void:
+	if card_pick_delay_timer.time_left > 0:
+		return
 	if card.func_callable != null:
 		card.func_callable.call(self, card.card_args)
 	upgrade_screen.visible = false

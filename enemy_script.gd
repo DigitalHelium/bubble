@@ -117,7 +117,7 @@ func drop_gem_for_escape() -> void:
 	else:
 		gem = topaz.instantiate()
 	gem.position = position
-	$"../".add_child(gem)
+	$"../".call_deferred("add_child", gem)
 
 func _on_timer_speed_timeout() -> void:
 	speed = DEFAULT_SPEED
