@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	DisplayServer.cursor_set_custom_image(load("res://texture/cursor-export.png"), 0, Vector2(0,0))
+	DisplayServer.cursor_set_custom_image(null, 0, Vector2(0,0))
 var scene_setting = preload("res://setting/Control.tscn")
 func _on_start_button_pressed() -> void:
 	#SceneTransition.change_scene("res://Assets/Scenes/Game_with_store.tscn")
