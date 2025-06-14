@@ -53,7 +53,7 @@ func check_spawn_place(position : Vector2i) -> bool:
 	position_cells.append_array(temp_positions)
 	
 	for pos in position_cells :
-		var cell = map.get_cell_tile_data(position)
+		var cell = map.get_cell_tile_data(pos)
 		if cell != null and cell.get_collision_polygons_count(0) > 0:
 			return false
 	return true
