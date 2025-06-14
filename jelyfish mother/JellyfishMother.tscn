@@ -28,10 +28,11 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_eg6cn")
 
 [node name="Price" type="Label" parent="."]
-offset_left = -20.0
-offset_top = 43.0
-offset_right = 20.0
-offset_bottom = 66.0
+offset_left = -19.0
+offset_top = 47.0
+offset_right = 21.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("6_s0rps")
 text = "30"
 horizontal_alignment = 1
 

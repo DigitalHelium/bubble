@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ct0wuhmli5bd6"]
+[gd_scene load_steps=19 format=3 uid="uid://ct0wuhmli5bd6"]
 
 [ext_resource type="Script" uid="uid://lvwlq4v7v0g7" path="res://main_bubble.gd" id="1_dpgxj"]
 [ext_resource type="Texture2D" uid="uid://bknqsnl6353os" path="res://texture/main bubble/bubble back.png" id="2_byoix"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bxx2aowytb8yr" path="res://texture/background_menu/metal.png" id="7_tjaii"]
 [ext_resource type="PackedScene" uid="uid://cnib1exrof02v" path="res://upgrade menu/UpgradeScreen.tscn" id="8_1pwmh"]
 [ext_resource type="PackedScene" uid="uid://byhdaldj8daj8" path="res://setting/Control.tscn" id="10_3yu2f"]
+[ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="10_f6r1e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byoix"]
 radius = 33.0151
@@ -206,6 +207,7 @@ offset_left = -20.0
 offset_top = -55.0
 offset_right = 20.0
 offset_bottom = -32.0
+theme_override_fonts/font = ExtResource("10_f6r1e")
 horizontal_alignment = 1
 
 [node name="Wallet" type="Node2D" parent="."]
