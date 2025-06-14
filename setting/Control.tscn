@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://byhdaldj8daj8"]
 
 [ext_resource type="Script" uid="uid://bc8juisrlafsk" path="res://setting/control.gd" id="1_cd5mh"]
-[ext_resource type="Texture2D" uid="uid://cyeyy16cdeicr" path="res://texture/tilemaps/tilemap.png" id="2_00aq1"]
 [ext_resource type="FontFile" uid="uid://dusp0mrhag7n3" path="res://fonts/pixel-anchor-jack_0.ttf" id="2_obdfc"]
+[ext_resource type="Texture2D" uid="uid://w671dvgr658j" path="res://texture/background_menu/WALL (2).png" id="2_xk6hv"]
 [ext_resource type="FontFile" uid="uid://dye8dys757x60" path="res://fonts/PixeloidMono.ttf" id="3_00aq1"]
 [ext_resource type="Script" uid="uid://dmyolwwm07gyj" path="res://setting/v_box_container.gd" id="4_1xere"]
 [ext_resource type="AudioStream" uid="uid://cvswgyh81q3ji" path="res://sound/дзынь.mp3" id="5_xk6hv"]
@@ -96,13 +96,13 @@ color = Color(0, 0, 0, 0.0823529)
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 2
-offset_left = -43.0
-offset_top = -15.0
-offset_right = 551.0
-offset_bottom = 385.0
+offset_left = -52.0
+offset_top = -23.0
+offset_right = 560.0
+offset_bottom = 393.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_00aq1")
+texture = ExtResource("2_xk6hv")
 expand_mode = 1
 
 [node name="MMB" type="Label" parent="."]

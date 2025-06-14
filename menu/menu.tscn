@@ -327,6 +327,7 @@ libraries = {
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("11_043lm")
 volume_db = -15.0
 autoplay = true

@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://n0w1l3hiiiik"]
+[gd_scene load_steps=4 format=3 uid="uid://n0w1l3hiiiik"]
 
 [ext_resource type="PackedScene" uid="uid://ddenutd72sxh0" path="res://guns/base/base_gun.tscn" id="1_osuug"]
 [ext_resource type="Script" uid="uid://c7uw510ovv40t" path="res://guns/blunderbuss/blunder_buss.gd" id="2_428is"]
+[ext_resource type="AudioStream" uid="uid://byu4m01xh4u1l" path="res://sound/пузырек пулемет.wav" id="3_osuug"]
 
 [node name="BlunderBuss" instance=ExtResource("1_osuug")]
 script = ExtResource("2_428is")
+
+[node name="AudioStreamPlayer" parent="GunSprite/GPUParticles2D" index="0"]
+stream = ExtResource("3_osuug")
+
+[node name="SoundRate" parent="GunSprite/GPUParticles2D/AudioStreamPlayer" index="0"]
+wait_time = 0.25

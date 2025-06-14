@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cphik01tltjlv"
+path="res://.godot/imported/выбор в меню или карточек.wav-7fbc599f970036701662cc699e1e0228.sample"
+
+[deps]
+
+source_file="res://sound/выбор в меню или карточек.wav"
+dest_files=["res://.godot/imported/выбор в меню или карточек.wav-7fbc599f970036701662cc699e1e0228.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

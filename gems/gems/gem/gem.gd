@@ -1,3 +1,3 @@
 class_name Gem extends RigidBody2D
 
-var cost = 1
+@export var cost = 1
